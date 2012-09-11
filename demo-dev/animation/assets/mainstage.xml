@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<begin>
+	<bean id="test" class="it.uniroma2.blacksheep.animation.entity.Background" /> 
+	 <bean id="test" class="it.uniroma2.blacksheep.animation.entity.StartButton">
+	    <property field="pointX" value="60" />
+		<property field="pointY" value="70" />
+		<property field="lengthX" value="200" />
+		<property field="lengthY" value="50" />
+	</bean>
+
+	 <bean id="test" class="it.uniroma2.blacksheep.animation.entity.CreditsButton">
+		<property field="pointX" value="60" />
+		<property field="pointY" value="140" />
+		<property field="lengthX" value="200" />
+		<property field="lengthY" value="50" />
+	</bean>
+
+	<bean id="test" class="it.uniroma2.blacksheep.animation.entity.ExitButton">
+		<property field="pointX" value="60" />
+		<property field="pointY" value="210" />
+		<property field="lengthX" value="200" />
+		<property field="lengthY" value="50" />
+	</bean> 
+	 
+</begin>
