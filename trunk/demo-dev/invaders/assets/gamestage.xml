@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<begin>
+	
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Background" />
+     
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.FireButton">
+        <property field="pointX" value="107" />
+		<property field="pointY" value="440" />
+    	<property field="lengthX" value="105" />
+		<property field="lengthY" value="40" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.LeftButton">
+        <property field="pointX" value="1" />
+		<property field="pointY" value="440" />
+    	<property field="lengthX" value="105" />
+		<property field="lengthY" value="40" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.RightButton">
+        <property field="pointX" value="213" />
+		<property field="pointY" value="440" />
+    	<property field="lengthX" value="105" />
+		<property field="lengthY" value="40" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Fire">
+        <property field="pointX" value="-10" />
+		<property field="pointY" value="-10" />
+    	<property field="lengthX" value="4" />
+		<property field="lengthY" value="7" />
+		<property field="dynamic" value="true" />
+    </bean> 
+    
+     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Cannon">
+        <property field="pointX" value="145" />
+		<property field="pointY" value="410" />
+    	<property field="lengthX" value="30" />
+		<property field="lengthY" value="20" />
+    </bean> 
+    
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="pointX" value="15" />
+		<property field="pointY" value="40" />
+    	<property field="lengthX" value="30" />
+		<property field="lengthY" value="20" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+       
+</begin>

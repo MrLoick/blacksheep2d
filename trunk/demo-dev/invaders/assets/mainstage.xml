@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<begin>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Title">
+        <property field="pointX" value="10" />
+		<property field="pointY" value="30" />
+    	<property field="lengthX" value="300" />
+		<property field="lengthY" value="160" />
+    </bean>
+        
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.StartButton">
+		<property field="pointX" value="60" />
+		<property field="pointY" value="220" />
+		<property field="lengthX" value="200" />
+		<property field="lengthY" value="50" />
+	</bean>
+	
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.CreditsButton">
+		<property field="pointX" value="60" />
+		<property field="pointY" value="290" />
+		<property field="lengthX" value="200" />
+		<property field="lengthY" value="50" />
+	</bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.ExitButton">
+		<property field="pointX" value="60" />
+		<property field="pointY" value="360" />
+		<property field="lengthX" value="200" />
+		<property field="lengthY" value="50" />
+	</bean>
+	<!-- <bean id="test" class="it.uniroma2.blacksheep.physics.entity.Background" />
+ -->
+</begin>
