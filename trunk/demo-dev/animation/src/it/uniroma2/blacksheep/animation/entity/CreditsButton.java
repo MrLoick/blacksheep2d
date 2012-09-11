@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 import it.uniroma2.blacksheep.animation.R;
+import it.uniroma2.framework.audio.SoundClip;
 import it.uniroma2.framework.entity.GameEntity;
 
 /***************************************************************************
@@ -29,6 +30,8 @@ public class CreditsButton extends GameEntity {
 	
 	private Bitmap creditButton;
 	
+	private SoundClip soundClip=SoundClip.getIstance();
+	
 	public CreditsButton() {
 		creditButton=getBitmap(R.drawable.creditsbutton);
 	}
@@ -48,6 +51,7 @@ public class CreditsButton extends GameEntity {
 
 			if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
 					&& MotionEvent.ACTION_UP == motionEvent.getAction()) {
+				soundClip.play(R.drawable.click);
 				sendMessage("CREDIT");
 			}
 

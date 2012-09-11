@@ -6,6 +6,7 @@ import android.util.Log;
 import it.uniroma2.blacksheep.animation.R;
 import it.uniroma2.framework.Game;
 import it.uniroma2.framework.ImageMap;
+import it.uniroma2.framework.audio.SoundClip;
 
 /***************************************************************************
  * @author Valentino Colatosti
@@ -39,7 +40,9 @@ public class BlackSheepDemoAnimationActivity extends Game {
 		imageMap.load(R.drawable.credits);	
 		imageMap.load(R.drawable.okbutton);
 		imageMap.load(R.drawable.horse);
-		Log.i("animation", "load ok");
+		
+		SoundClip soundClip=SoundClip.getIstance();
+		soundClip.load(R.drawable.click);
 	
 	}
 
