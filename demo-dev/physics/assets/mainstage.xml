@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<begin>
+	<bean id="test" class="it.uniroma2.blacksheep.physics.entity.Background" />
+	<bean id="test" class="it.uniroma2.blacksheep.physics.entity.StartButton">
+		<property field="pointX" value="60" />
+		<property field="pointY" value="220" />
+		<property field="lengthX" value="200" />
+		<property field="lengthY" value="50" />
+	</bean>
+
+	<bean id="test" class="it.uniroma2.blacksheep.physics.entity.CreditsButton">
+		<property field="pointX" value="60" />
+		<property field="pointY" value="290" />
+		<property field="lengthX" value="200" />
+		<property field="lengthY" value="50" />
+	</bean>
+
+	<bean id="test" class="it.uniroma2.blacksheep.physics.entity.ExitButton">
+		<property field="pointX" value="60" />
+		<property field="pointY" value="360" />
+		<property field="lengthX" value="200" />
+		<property field="lengthY" value="50" />
+	</bean>
+
+</begin>

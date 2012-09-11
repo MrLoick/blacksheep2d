@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<begin>
+	<bean id="test" class="it.uniroma2.blacksheep.physics.entity.Background" />
+	<bean id="square" class="it.uniroma2.blacksheep.physics.entity.PhysicsSquare">
+		<property field="pointX" value="50" />
+		<property field="pointY" value="100" />
+		<property field="lengthX" value="50" />
+		<property field="lengthY" value="50" />
+		<property field="angle" value="30" />
+		<property field="density" value="1" />
+		<property field="friction" value="0.3f" />
+		<property field="dynamic" value="true" />
+		<!-- <property field="sleepingAllowed" value="true" /> -->
+	</bean>
+	
+	<bean id="ball" class="it.uniroma2.blacksheep.physics.entity.PhysicsBall">
+		<property field="pointX" value="150" />
+		<property field="pointY" value="100" />
+		<property field="lengthX" value="30" />
+		<property field="lengthY" value="30" />
+		
+		<property field="density" value="1" />
+		<property field="friction" value="0.3f" />
+		<property field="dynamic" value="true" />
+		<property field="shapeType" value="1" />
+		<!-- <property field="sleepingAllowed" value="true" /> -->
+	</bean>
+	
+	<bean id="ground" class="it.uniroma2.blacksheep.physics.entity.Ground">
+		<property field="pointX" value="0" />
+		<property field="pointY" value="470" />
+		<property field="lengthX" value="320" />
+		<property field="lengthY" value="10" />
+		
+		<property field="density" value="1" />
+		<property field="friction" value="0.3f" />
+	</bean>
+	
+	
+	<bean id="top" class="it.uniroma2.blacksheep.physics.entity.Ground">
+		<property field="pointX" value="0" />
+		<property field="pointY" value="0" />
+		<property field="lengthX" value="320" />
+		<property field="lengthY" value="10" />
+		<property field="density" value="1" />
+		<property field="friction" value="0.3f" />
+	</bean>
+	
+	<bean id="sx" class="it.uniroma2.blacksheep.physics.entity.Wood">
+		<property field="pointX" value="0" />
+		<property field="pointY" value="10" />
+		<property field="lengthX" value="10" />
+		<property field="lengthY" value="460" />
+		<property field="density" value="1" />
+		<property field="friction" value="0.3f" />
+	</bean>      
+      
+      
+    <bean id="dx" class="it.uniroma2.blacksheep.physics.entity.Wood">
+		<property field="pointX" value="310" />
+		<property field="pointY" value="10" />
+		<property field="lengthX" value="10" />
+		<property field="lengthY" value="460" />
+		<property field="density" value="1" />
+		<property field="friction" value="0.3f" />
+	</bean> 
+       
+</begin>
