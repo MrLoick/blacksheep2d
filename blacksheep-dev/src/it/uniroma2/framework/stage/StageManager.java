@@ -5,13 +5,13 @@ import java.util.HashMap;
 
 import android.util.Log;
 
-import it.uniroma2.framework.RenderReference;
 import it.uniroma2.framework.entity.GameEntity;
 import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.IPerceptor;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.input.TouchManager;
 import it.uniroma2.framework.mind.MindManager;
+import it.uniroma2.framework.render.RenderReference;
 
 /*******************************************************************************
  * 

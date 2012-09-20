@@ -1,6 +1,5 @@
 package it.uniroma2.framework.input;
 
-import it.uniroma2.framework.entity.IKeyInput;
 
 /*******************************************************************************
  * 

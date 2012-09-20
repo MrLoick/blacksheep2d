@@ -1,4 +1,4 @@
-package it.uniroma2.framework.entity;
+package it.uniroma2.framework.input;
 
 import android.view.KeyEvent;
 

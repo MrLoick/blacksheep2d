@@ -1,4 +1,4 @@
-package it.uniroma2.framework;
+package it.uniroma2.framework.render;
 
 
 import it.uniroma2.framework.input.KeyManager;

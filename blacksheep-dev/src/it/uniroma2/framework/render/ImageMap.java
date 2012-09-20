@@ -1,4 +1,6 @@
-package it.uniroma2.framework;
+package it.uniroma2.framework.render;
+
+import it.uniroma2.framework.Game;
 
 import java.util.HashMap;
 

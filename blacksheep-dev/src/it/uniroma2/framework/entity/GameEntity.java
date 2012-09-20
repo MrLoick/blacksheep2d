@@ -17,8 +17,6 @@ import android.hardware.SensorManager;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import it.uniroma2.framework.Game;
-import it.uniroma2.framework.ImageMap;
-import it.uniroma2.framework.RenderReference;
 import it.uniroma2.framework.audio.SoundClip;
 import it.uniroma2.framework.collisionmanager.CollisionBox2D;
 import it.uniroma2.framework.collisionmanager.PhysicsObj;
@@ -26,10 +24,13 @@ import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.IPerceptor;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.event.RTSimulationKernel;
+import it.uniroma2.framework.input.ITouchable;
 import it.uniroma2.framework.input.KeyManager;
 import it.uniroma2.framework.input.TouchManager;
 import it.uniroma2.framework.mind.IMind;
 import it.uniroma2.framework.mind.MindManager;
+import it.uniroma2.framework.render.ImageMap;
+import it.uniroma2.framework.render.RenderReference;
 
 
 /*******************************************************************************
@@ -55,7 +56,7 @@ import it.uniroma2.framework.mind.MindManager;
 
 
 @SuppressLint("NewApi")
-public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, IKeyInput, IMind,SensorEventListener {
+public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, IMind,SensorEventListener {
 	
 	private int pointX;
 	private int pointY;
@@ -104,7 +105,7 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 		//physicsObj.autoset();
 		  CollisionBox2D.getIstance().add(physicsObj);
 		  TouchManager.getIstance().add(this);
-	      KeyManager.getIstance().add(this);
+	      //KeyManager.getIstance().add(this);
 	      RenderReference.getIstance().getRender().add(this);
 	      MindManager.getIstance().add(this);
 	      
@@ -121,7 +122,7 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 
 		CollisionBox2D.getIstance().destroy(physicsObj);
 		TouchManager.getIstance().remove(this);
-		KeyManager.getIstance().remove(this);
+		//KeyManager.getIstance().remove(this);
 		RenderReference.getIstance().getRender().remove(this);
 		MindManager.getIstance().remove(this);
 		sensorManager.unregisterListener(this);
