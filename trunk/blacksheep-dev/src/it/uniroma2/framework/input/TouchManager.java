@@ -1,6 +1,5 @@
 package it.uniroma2.framework.input;
 
-import it.uniroma2.framework.entity.ITouchable;
 import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.event.RTSimulationKernel;

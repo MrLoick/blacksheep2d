@@ -1,6 +1,5 @@
-package it.uniroma2.framework.entity;
+package it.uniroma2.framework.render;
 
-import android.view.MotionEvent;
 
 /*******************************************************************************
  * 
@@ -23,7 +22,30 @@ import android.view.MotionEvent;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-public interface ITouchable {
+
+public class RenderReference {
 	
-	public boolean onTouchEvent(MotionEvent motionEvent);
+	private Render render;
+	
+	private static RenderReference renderReference;
+	
+	private RenderReference(){
+				
+	}
+	
+	public static RenderReference getIstance(){
+		if(renderReference==null){
+			renderReference=new RenderReference();
+		}
+		return renderReference;
+	}
+	
+	public void setRender(Render render){
+		this.render=render;
+	}
+	
+	public Render getRender(){
+		return render;
+	}
+
 }
