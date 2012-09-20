@@ -67,7 +67,6 @@ public class RTSimulationKernel {
 	 */
 	public void SendEvent(Event event)
 	{
-		//System.out.println("rtSimulationKernel sendEvent delay: "+event.getDelay());
 		dispatcher.sendEvent(event);
 	}
 	
