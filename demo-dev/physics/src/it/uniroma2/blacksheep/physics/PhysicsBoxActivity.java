@@ -2,7 +2,7 @@ package it.uniroma2.blacksheep.physics;
 
 import it.uniroma2.blacksheep.physics.R;
 import it.uniroma2.framework.Game;
-import it.uniroma2.framework.ImageMap;
+import it.uniroma2.framework.render.ImageMap;
 
 /***************************************************************************
  * @author Valentino Colatosti
