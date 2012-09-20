@@ -5,7 +5,7 @@ package it.uniroma2.blacksheep.animation;
 import android.util.Log;
 import it.uniroma2.blacksheep.animation.R;
 import it.uniroma2.framework.Game;
-import it.uniroma2.framework.ImageMap;
+import it.uniroma2.framework.render.ImageMap;
 import it.uniroma2.framework.audio.SoundClip;
 
 /***************************************************************************
