@@ -39,7 +39,7 @@ import android.util.Log;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-public class CollisionBox2D {
+public class CollisionBox2D implements Runnable{
 	
 	private static CollisionBox2D collisionBox2D;
 	private  World world;

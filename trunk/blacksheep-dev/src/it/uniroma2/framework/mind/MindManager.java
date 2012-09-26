@@ -3,8 +3,6 @@ package it.uniroma2.framework.mind;
 
 import java.util.ArrayList;
 
-import android.util.Log;
-
 
 /*******************************************************************************
  * 

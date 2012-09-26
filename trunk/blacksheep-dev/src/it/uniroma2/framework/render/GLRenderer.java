@@ -8,9 +8,6 @@ import it.uniroma2.framework.entity.IDrawable;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.GLU;
 import android.opengl.GLUtils;
@@ -22,10 +19,7 @@ public class GLRenderer implements Renderer{
 	private ArrayList<IDrawable> drawableList;
 	private SurfaceHolder surfaceHolder;
 	//private boolean run=false;
-	private Paint paint;
-	private long startTime;
-	private long elapsed;
-	private boolean run=false;
+	
 	
 	public GLRenderer(SurfaceHolder surfaceHolder/*, Context context,Handler handler*/){
 		Log.i("game", "render");
@@ -46,20 +40,20 @@ public class GLRenderer implements Renderer{
 
 		// Reset the Modelview Matrix
 		gl.glLoadIdentity();
+		
+		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+
+		// Reset the Modelview Matrix
+		gl.glLoadIdentity();
+
+		// Drawing
+		gl.glTranslatef(0.0f, 0.0f, -5.0f);		// move 5 units INTO the screen
+												// is the same as moving the camera 5 units away
+		gl.glScalef(0.5f, 0.5f, 0.5f);			// scale the square to 50% 
+												// otherwise it will be too large
+		//square.draw(gl);					
 	
 		
-		
-		
-		startTime = System.currentTimeMillis();
-		//canvas.drawColor(Color.CYAN);
-		for(int i=0;i<drawableList.size();i++){
-			//if(!drawableList.get(i).draw(gl))
-				remove(drawableList.get(i));
-		}
-		
-		elapsed = System.currentTimeMillis() - startTime;
-		//canvas.drawText("FPS: "+Math.round(1000f / elapsed) , 10, 10, paint);
-		startTime = System.currentTimeMillis();
 		
 	}
 	
