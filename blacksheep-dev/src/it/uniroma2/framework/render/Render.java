@@ -147,11 +147,11 @@ public class Render extends Thread {
 
 					framesSkipped = 0; // resetting the frames skipped
 
-					mindManager.run();
+					//mindManager.run();
 
 					// aggiornare fisica
 					
-					collisionBox2D.run();
+					//collisionBox2D.run();
 					
 
 					// render state to the screen

@@ -2,9 +2,11 @@ package it.uniroma2.framework;
 
 import java.util.Properties;
 
+import it.uniroma2.framework.collisionmanager.CollisionBox2D;
 import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.event.RTSimulationKernel;
+import it.uniroma2.framework.mind.MindManager;
 import it.uniroma2.framework.render.GameView;
 import it.uniroma2.framework.render.Render;
 import it.uniroma2.framework.render.RenderReference;
@@ -122,6 +124,11 @@ public class Game extends Activity {
         kernel.register(stageManager);
         
         resources();       
+        
+        new Thread(MindManager.getIstance()).start();
+        //new Thread()
+        new Thread(CollisionBox2D.getIstance()).start();
+        
         
         new SaxXmlParserMessage().parse();
         new SaxXmlParser().parse();
