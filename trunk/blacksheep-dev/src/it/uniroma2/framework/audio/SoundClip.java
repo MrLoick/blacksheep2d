@@ -27,7 +27,6 @@ import it.uniroma2.framework.Game;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.util.Log;
 
 public class SoundClip {
 	
