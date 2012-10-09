@@ -4,20 +4,12 @@ package it.uniroma2.framework.render;
 import it.uniroma2.framework.input.KeyManager;
 import it.uniroma2.framework.input.TouchManager;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-//import android.graphics.Canvas;
-//import android.util.AttributeSet;
-import android.test.TouchUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
+
 
 
 /*******************************************************************************
@@ -44,26 +36,19 @@ import android.view.ViewGroup.LayoutParams;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 	
 	private Render render;
-	
-	//private int width;
-	//private int height;
 
 	public GameView(Context context) {
 		super(context);
-		//getHolder().addCallback(this);
-		
-		//surfaceCreated(getHolder());
-		
+				
 		getHolder().addCallback(this);
-		this.render = new Render(getHolder()/*, getContext()*/);
+		this.render = new Render(getHolder());
 		
-		Log.i("game", "GameView1");
+		//render=Render.getIstance(getHolder());
+		//render.setSurfaceHolder(getHolder());
+		
 		setFocusable(true);
 		setFocusableInTouchMode(true);
-	/*	LayoutParams layoutParams=new LayoutParams(context);
-		//LayoutParams.FILL_PARENT;
-		setLayoutParams(layoutParams);*/
-			
+				
 	}
 	
 	
@@ -74,9 +59,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
-		Log.i("game", "surfaceChanged");
-		//Log.i("bitmap","game view width "+width+" height "+height);
-		 //render.setSurfaceSize(width, height);
 		
 	}
 
@@ -105,12 +87,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 	
 	 public boolean onTouchEvent(MotionEvent motionEvent){
 		//int pointerCount = motionEvent.getPointerCount();
-		int id;
-		MotionEvent event;
+		//int id;
+		//MotionEvent event;
 	
 		TouchManager touchManager=TouchManager.getIstance();
 		touchManager.onTouchEvent(motionEvent);
-		//Log.i("input", "pointerCount"+pointerCount);
 		
 		return true;
 		
