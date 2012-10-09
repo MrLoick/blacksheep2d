@@ -3,6 +3,8 @@ package it.uniroma2.framework.mind;
 
 import java.util.ArrayList;
 
+import android.os.Handler;
+
 
 /*******************************************************************************
  * 
@@ -25,30 +27,26 @@ import java.util.ArrayList;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-public class MindManager /*extends LinearLayout*/ implements Runnable{//Thread {
+public class MindManager  /*implements Runnable*/{//Thread {
 	
 	private static MindManager mindManager;
-	private boolean run;
-	//private ScheduledThreadPoolExecutor scheduledThreadPoolExecutor;
+	//private boolean run;
+	
 	private ArrayList<IMind> mindList;
 	
-	
-	//private Timer timer;
 
-	private MindManager(/*Context context*/){
-		//super(context);
+	private MindManager(){
+		
 		mindList=new ArrayList<IMind>();
-		//timer=new Timer();
-			
-    	//scheduledThreadPoolExecutor=new ScheduledThreadPoolExecutor(1);
-    	
+		
+		//handler=new Handler();    	
 
 	}
 	
 	public static MindManager getIstance(){
 		
 		if(mindManager==null)
-			mindManager=new MindManager(/*ContextReference.getIstance().getContext()*/);
+			mindManager=new MindManager();
 		return mindManager;
 	}
 	
@@ -56,15 +54,8 @@ public class MindManager /*extends LinearLayout*/ implements Runnable{//Thread {
 	public void add(IMind mind){
 		if(mind!=null&& !mindList.contains(mind)){
 			mindList.add(mind);
-			if(!run){
-				run=true;
-				//this.start();
-			}
-				
+							
 		}
-			
-		
-		//scheduledThreadPoolExecutor.
 	}
 	
 	public void clear(){
@@ -74,10 +65,10 @@ public class MindManager /*extends LinearLayout*/ implements Runnable{//Thread {
 	public void remove(IMind mind){
 		if(mindList.contains(mind)){
 			mindList.remove(mind);
-			if(mindList.size()==0){
-				run=false;
+			/*if(mindList.size()==0){
+				//run=false;
 				//this.stop();
-			}
+			}*/
 		}
 			
 	}
@@ -91,13 +82,15 @@ public class MindManager /*extends LinearLayout*/ implements Runnable{//Thread {
 	
 	
 	public void run() {
-		run = true;
+		//run = true;
 		
 		//long elapsed = 0;
 		for (int index = 0; index < mindList.size(); index++)
 			if (!mindList.get(index).mind())
 				remove(mindList.get(index));
 		//postInvalidate();
+		
+		//handler.postDelayed(this, 30);
 	}
 	
 	
