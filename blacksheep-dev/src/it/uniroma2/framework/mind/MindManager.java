@@ -27,19 +27,21 @@ import android.os.Handler;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-public class MindManager  /*implements Runnable*/{//Thread {
+public class MindManager implements Runnable{//Thread {
 	
 	private static MindManager mindManager;
 	//private boolean run;
 	
 	private ArrayList<IMind> mindList;
 	
+	private boolean run;
+	private Handler handler;
 
 	private MindManager(){
 		
 		mindList=new ArrayList<IMind>();
 		
-		//handler=new Handler();    	
+		handler=new Handler();    	
 
 	}
 	
@@ -65,32 +67,27 @@ public class MindManager  /*implements Runnable*/{//Thread {
 	public void remove(IMind mind){
 		if(mindList.contains(mind)){
 			mindList.remove(mind);
-			/*if(mindList.size()==0){
-				//run=false;
-				//this.stop();
-			}*/
 		}
-			
+				
 	}
-	
-	/*public void start(){
-		//super.start();
-		//timer.schedule(this,0,100);
-    	//scheduledThreadPoolExecutor.scheduleAtFixedRate(mindManager,0, 50, TimeUnit.MILLISECONDS);
-
-	}*/
-	
+		
 	
 	public void run() {
-		//run = true;
-		
-		//long elapsed = 0;
-		for (int index = 0; index < mindList.size(); index++)
+		//while(run){
+			for (int index = 0; index < mindList.size(); index++)
 			if (!mindList.get(index).mind())
 				remove(mindList.get(index));
-		//postInvalidate();
+		//}
 		
-		//handler.postDelayed(this, 30);
+		handler.postDelayed(this, 30);
+	}
+
+	public boolean isRun() {
+		return run;
+	}
+
+	public void setRun(boolean run) {
+		this.run = run;
 	}
 	
 	

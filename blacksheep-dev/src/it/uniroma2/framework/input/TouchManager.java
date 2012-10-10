@@ -50,7 +50,6 @@ public class TouchManager {
 	public void add(ITouchable touchable){
 		if(touchable.onTouchEvent(null))
 			touchableList.add(touchable);
-		Log.i("register", "touch "+touchableList.size());
 	}
 	
 	public void remove(ITouchable touchable){

@@ -3,7 +3,6 @@ package it.uniroma2.framework.entity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.util.Log;
 
 
 /*******************************************************************************
