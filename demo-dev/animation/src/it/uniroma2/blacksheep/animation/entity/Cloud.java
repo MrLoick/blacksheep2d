@@ -34,7 +34,7 @@ private Bitmap backgroundCloud;
 		
 		setBitmap(backgroundCloud);
 		
-		Log.i("blacksheep", "Cloud ok **************");
+		//Log.i("blacksheep", "Cloud ok **************");
 	}
 	
 
