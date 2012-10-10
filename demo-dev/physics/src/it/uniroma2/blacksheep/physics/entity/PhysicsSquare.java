@@ -2,7 +2,7 @@ package it.uniroma2.blacksheep.physics.entity;
 
 
 import it.uniroma2.blacksheep.physics.R;
-import it.uniroma2.framework.collisionmanager.CollisionBox2D;
+import it.uniroma2.framework.physic.CollisionBox2D;
 import it.uniroma2.framework.entity.GameEntity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
