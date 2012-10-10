@@ -2,14 +2,13 @@ package it.uniroma2.framework;
 
 import java.util.Properties;
 
-import it.uniroma2.framework.collisionmanager.CollisionBox2D;
 import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.event.RTSimulationKernel;
 import it.uniroma2.framework.mind.MindManager;
+import it.uniroma2.framework.physic.CollisionBox2D;
 import it.uniroma2.framework.render.GameView;
 import it.uniroma2.framework.render.Render;
-import it.uniroma2.framework.render.RenderReference;
 import it.uniroma2.framework.stage.Stage;
 import it.uniroma2.framework.stage.StageManager;
 import it.uniroma2.framework.xml.SaxXmlParser;
@@ -82,11 +81,8 @@ public class Game extends Activity {
         //disable lock screen
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
        
-        
-		//new GameProperties(); 
 		Properties properties=GameProperties.getIstance().getPropeties();
-		//Log.i("blacksheep", "property PI" + properties.get("PI"));
-		//Log.i("blacksheep", "prop screen "+properties.get("SCREEN_ORIENTATION"));
+		
 		
 		
 		if(properties.get("SCREEN_ORIENTATION")!=null){
@@ -116,9 +112,6 @@ public class Game extends Activity {
               
         RTSimulationKernel kernel;
         kernel=RTSimulationKernel.getIstance();
-        
-        Render render=gameView.getRender();
-        RenderReference.getIstance().setRender(render);
              
         StageManager stageManager=StageManager.getIstance();
         kernel.register(stageManager);
@@ -128,12 +121,24 @@ public class Game extends Activity {
         new Thread(MindManager.getIstance()).start();
         //new Thread()
         new Thread(CollisionBox2D.getIstance()).start();
+       // GameLifeCycle cycle= new GameLifeCycle();
+        
+       /* cycle.setRun(true);
+        new Thread(cycle).start();*/
+        
+        
+      
         
         
         new SaxXmlParserMessage().parse();
         new SaxXmlParser().parse();
         
-        new ExitStage("EXIT",null);      
+        new ExitStage("EXIT",null);  
+        
+        /*while(true){
+        	MindManager.getIstance().run();
+        	CollisionBox2D.getIstance().run();
+        }*/
            
     }
     
@@ -141,10 +146,7 @@ public class Game extends Activity {
     
     public final void onStart(){
     	super.onStart();
-    	
-    	//Log.i("blacksheep", "height "+getWindow().getAttributes().height);
-        //Log.i("blacksheep", "width "+getWindow().getAttributes().width);
-    	
+    	  	
         RTSimulationKernel kernel;
         kernel=RTSimulationKernel.getIstance();
 		Event event=kernel.requestEventIstance();

@@ -41,10 +41,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 		super(context);
 				
 		getHolder().addCallback(this);
-		this.render = new Render(getHolder());
+		//this.render = new Render(getHolder());
 		
-		//render=Render.getIstance(getHolder());
-		//render.setSurfaceHolder(getHolder());
+		render=Render.getIstance();
+		render.setSurfaceHolder(getHolder());
 		
 		setFocusable(true);
 		setFocusableInTouchMode(true);
@@ -52,9 +52,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 	}
 	
 	
-	public Render getRender(){
+	/*public Render getRender(){
 		return render;
-	}
+	}*/
 	
 
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,

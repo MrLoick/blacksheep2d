@@ -3,15 +3,13 @@ package it.uniroma2.framework.stage;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.util.Log;
-
 import it.uniroma2.framework.entity.GameEntity;
 import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.IPerceptor;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.input.TouchManager;
 import it.uniroma2.framework.mind.MindManager;
-import it.uniroma2.framework.render.RenderReference;
+import it.uniroma2.framework.render.Render;
 
 /*******************************************************************************
  * 
@@ -56,11 +54,10 @@ public class StageManager implements IPerceptor {
 
 	public void receiveEvent(Event event) {
 		ArrayList<GameEntity> gameEntityList;
-		//stageMap.
 		// verifica se l'evento preve un cambio di livello
 		if ((stageMap.get(event.getMessage())) != null) {
-			Log.i("blacksheep", "stageManager registrazione componenti "
-					+ event.getMessage());
+			//Log.i("blacksheep", "stageManager registrazione componenti "
+			//		+ event.getMessage());
 			// unregister GameEntity from stage for stage change
 			gameEntityList = stage.getGameEntity();
 			for (int i = 0; i < gameEntityList.size(); i++) {
@@ -69,12 +66,12 @@ public class StageManager implements IPerceptor {
 			// set new stage
 			TouchManager.getIstance().clear();
 			MindManager.getIstance().clear();
-			RenderReference.getIstance().getRender().clearDrawable();
+			//RenderReference.getIstance().getRender().clearDrawable();
+			Render.getIstance().clearDrawable();
 			stage.clear();
 			stage = stageMap.get(event.getMessage());
 			stage.onLoad();
 			gameEntityList = stage.getGameEntity();
-			// Log.i("box2d","stageManager componenti registrati:"+);
 			for (int i = 0; i < gameEntityList.size(); i++) {
 				gameEntityList.get(i).register();
 			}
@@ -89,7 +86,7 @@ public class StageManager implements IPerceptor {
 			this.stage=stage;
 		stageMap.put(stage.getKey(), stage);
 		
-		Log.i("register", "stage size"+stageMap.size());
+		//Log.i("register", "stage size"+stageMap.size());
 	}
 	
 	public void remove(IStage stage){

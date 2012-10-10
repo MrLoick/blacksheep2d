@@ -42,7 +42,7 @@ public class Render extends Thread {
 	
 	private Paint paint;
 	
-	//private static Render render;
+	private static Render render;
 	
 	public Render(SurfaceHolder surfaceHolder){
 		
@@ -55,13 +55,22 @@ public class Render extends Thread {
 	
 	/*private Render(){
 		
+	}*/
+	
+	private Render(){
+		
+		//this.surfaceHolder=surfaceHolder;
+		drawableList=new ArrayList<IDrawable>();
+		paint =new Paint();
+		paint.setColor(Color.WHITE);
+		
 	}
 	
-	public static Render getIstance(SurfaceHolder surfaceHolder){
+	public static Render getIstance(){
 		if(render==null)
-			render=new Render(surfaceHolder);
+			render=new Render();
 		return render;
-	}*/
+	}
 		
 		
 	public void run() {
@@ -113,9 +122,10 @@ public class Render extends Thread {
 	}
 	
 		
-	/*public void setSurfaceHolder(SurfaceHolder surfaceHolder) {
-		this.surfaceHolder = surfaceHolder;
-	}*/
+	public void setSurfaceHolder(SurfaceHolder surfaceHolder) {
+		if(surfaceHolder!=null)
+			this.surfaceHolder = surfaceHolder;
+	}
 
 	
 		

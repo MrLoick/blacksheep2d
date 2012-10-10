@@ -18,8 +18,6 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import it.uniroma2.framework.Game;
 import it.uniroma2.framework.audio.SoundClip;
-import it.uniroma2.framework.collisionmanager.CollisionBox2D;
-import it.uniroma2.framework.collisionmanager.PhysicsObj;
 import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.IPerceptor;
 import it.uniroma2.framework.event.Message;
@@ -29,8 +27,10 @@ import it.uniroma2.framework.input.KeyManager;
 import it.uniroma2.framework.input.TouchManager;
 import it.uniroma2.framework.mind.IMind;
 import it.uniroma2.framework.mind.MindManager;
+import it.uniroma2.framework.physic.CollisionBox2D;
+import it.uniroma2.framework.physic.PhysicObj;
 import it.uniroma2.framework.render.ImageMap;
-import it.uniroma2.framework.render.RenderReference;
+import it.uniroma2.framework.render.Render;
 
 
 /*******************************************************************************
@@ -63,7 +63,7 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	private int lengthX;
 	private int lengthY;
 	
-	private PhysicsObj physicsObj;
+	private PhysicObj physicsObj;
 	private boolean physics=false;
 
 	private static SensorManager sensorManager=(SensorManager) Game.getContext().getSystemService(Context.SENSOR_SERVICE);
@@ -94,7 +94,7 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	
 	public GameEntity(){
 		
-		physicsObj=new PhysicsObj(this);
+		physicsObj=new PhysicObj(this);
 		//physicsBodyDef=new BodyDef();
 		//uper(ContextReference.getIstance().getContext());
 		//sensorManager =(SensorManager) ContextReference.getIstance().getContext().getSystemService(Context.SENSOR_SERVICE);
@@ -106,7 +106,8 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 		  CollisionBox2D.getIstance().add(physicsObj);
 		  TouchManager.getIstance().add(this);
 	      //KeyManager.getIstance().add(this);
-	      RenderReference.getIstance().getRender().add(this);
+	      //RenderReference.getIstance().getRender().add(this);
+		  Render.getIstance().add(this);
 	      MindManager.getIstance().add(this);
 	      
 	      //sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME, handler)//
@@ -123,7 +124,8 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 		CollisionBox2D.getIstance().destroy(physicsObj);
 		TouchManager.getIstance().remove(this);
 		//KeyManager.getIstance().remove(this);
-		RenderReference.getIstance().getRender().remove(this);
+		//RenderReference.getIstance().getRender().remove(this);
+		Render.getIstance().remove(this);
 		MindManager.getIstance().remove(this);
 		sensorManager.unregisterListener(this);
 	}

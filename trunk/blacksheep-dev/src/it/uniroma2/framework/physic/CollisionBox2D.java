@@ -16,6 +16,7 @@ import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 import org.jbox2d.dynamics.contacts.Contact;
 
+import android.os.Handler;
 import android.util.Log;
 
 /*******************************************************************************
@@ -39,7 +40,7 @@ import android.util.Log;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-public class CollisionBox2D implements Runnable{
+public class CollisionBox2D extends Thread implements Runnable{
 	
 	private static CollisionBox2D collisionBox2D;
 	private  World world;
@@ -48,15 +49,15 @@ public class CollisionBox2D implements Runnable{
 	public static float RATIO =32.0f;
 	
 	private ArrayList<PhysicObj> listPhysicsObj;
-	
+	private Handler handler;
 	
 	private Vec2 gravity;
 	
 	
 
 	private CollisionBox2D(){
-		
-	        
+		    
+		handler=new Handler();
 	        boolean doSleep = true;
 	        listPhysicsObj=new ArrayList<PhysicObj>();
 	        Properties properties= GameProperties.getIstance().getPropeties();
@@ -67,7 +68,7 @@ public class CollisionBox2D implements Runnable{
 	        RATIO=new Float(properties.getProperty("RATIO", "32.0f"));
 			gravity = new Vec2( gx, gy);
 			world = new World(gravity, doSleep);
-			run =false;
+			setRun(false);
 			Log.i("box2d", "start world of physics");
 		
 	}
@@ -83,13 +84,13 @@ public class CollisionBox2D implements Runnable{
 	
 	
 	public void destroy(IPhysicObj physicsObj){
-		Log.i("box2d","destroy body");
+		//Log.i("box2d","destroy body");
 		synchronized(collisionBox2D){
 			listPhysicsObj.remove(physicsObj);
 			world.destroyBody(physicsObj.getBody());
 			
 		}
-		Log.i("box2d","after destroy bodycount"+world.getBodyCount());
+		//Log.i("box2d","after destroy bodycount"+world.getBodyCount());
 	}
 	
 	public void add(PhysicObj physicsObj) {
@@ -143,8 +144,7 @@ public class CollisionBox2D implements Runnable{
 			}
 
 			case (PhysicObj.BOX): {
-				Log.i("box2d", "BOX ");
-				
+				//Log.i("box2d", "BOX ");				
 				PolygonShape polygonShape = new PolygonShape();
 				polygonShape.setAsBox(lengthX/2, lengthY/2);
 				fixtureDef.shape = polygonShape;
@@ -165,7 +165,7 @@ public class CollisionBox2D implements Runnable{
 			
 		body.setSleepingAllowed(physicsObj.getSleepingAllowed()) ;
 		
-		Log.i("box2d"," body rad" + body.getAngle()+ " body angle "+Math.toDegrees( body.getAngle()));
+		//Log.i("box2d"," body rad" + body.getAngle()+ " body angle "+Math.toDegrees( body.getAngle()));
 		physicsObj.setBody(body);
 		
 	
@@ -177,45 +177,46 @@ public class CollisionBox2D implements Runnable{
 		
 	
 	
-	public void run(){
-		synchronized(collisionBox2D){
-		float timeStep = 1.0f / 50.0f;
-		int iterations = 10;		
-		
-		world.step(timeStep, iterations,iterations);
-		for(int i=0;i<listPhysicsObj.size();i++)
-			listPhysicsObj.get(i).sync();
-			
-		
-		}
-		Contact contact=world.getContactList();
-		while(contact!=null){
-			GameEntity a=(GameEntity) contact.m_fixtureA.getUserData();
-			GameEntity b=(GameEntity) contact.m_fixtureB.getUserData();
-			a.receiveCollisionEvent(contact);
-			b.receiveCollisionEvent(contact);
-			contact=contact.getNext();
-		}
-	
+	public void run() {
+		synchronized (collisionBox2D) {
+			//while (run) {
+				float timeStep = 1.0f / 50.0f;
+				int iterations = 10;
+
+				world.step(timeStep, iterations, iterations);
+				for (int i = 0; i < listPhysicsObj.size(); i++)
+					listPhysicsObj.get(i).sync();
+
+			}
+			Contact contact = world.getContactList();
+			while (contact != null) {
+				GameEntity a = (GameEntity) contact.m_fixtureA.getUserData();
+				GameEntity b = (GameEntity) contact.m_fixtureB.getUserData();
+				a.receiveCollisionEvent(contact);
+				b.receiveCollisionEvent(contact);
+				contact = contact.getNext();
+			}
+		//}
+			handler.postDelayed(this, 30);
+
 	}
 	
 
-
-	/*public boolean isRun() {
-		return run;
-	}*/
-	
 	public void setGravity(float x, float y){
 		gravity.set(-1*x, y);
 		world.setGravity(gravity);		
 	}
 
 
-	/*public void setRun(boolean run) {
+	public boolean isRun() {
+		return run;
+	}
+
+
+	public void setRun(boolean run) {
 		this.run = run;
 	}
-	*/
-	
+
 	
 	/*public void moveBody(Body body,Vec2 p){
 		
