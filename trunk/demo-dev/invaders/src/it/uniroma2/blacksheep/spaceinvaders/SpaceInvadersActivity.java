@@ -1,7 +1,6 @@
 package it.uniroma2.blacksheep.spaceinvaders;
 
 import it.uniroma2.framework.Game;
-import it.uniroma2.framework.render.ImageMap;
 
 /***************************************************************************
  * @author Valentino Colatosti
@@ -29,19 +28,20 @@ public class SpaceInvadersActivity extends Game {
 	public void resources() {
 
 		// load all game bitmap
-		ImageMap image = ImageMap.getIstance();
-		image.load(R.drawable.startbutton);
-		image.load(R.drawable.creditsbutton);
-		image.load(R.drawable.exitbutton);
-		image.load(R.drawable.title);
-		image.load(R.drawable.firebutton);
-		image.load(R.drawable.leftbutton);
-		image.load(R.drawable.cannon);
-		image.load(R.drawable.rightbutton);
-		image.load(R.drawable.invaders1);
-		image.load(R.drawable.credits);
-		image.load(R.drawable.okbutton);
-		image.load(R.drawable.fire);
+		loadImage(R.drawable.startbutton);
+		loadImage(R.drawable.creditsbutton);
+		loadImage(R.drawable.exitbutton);
+		loadImage(R.drawable.title);
+		loadImage(R.drawable.firebutton);
+		loadImage(R.drawable.leftbutton);
+		loadImage(R.drawable.cannon);
+		loadImage(R.drawable.rightbutton);
+		loadImage(R.drawable.invaders1);
+		loadImage(R.drawable.credits);
+		loadImage(R.drawable.okbutton);
+		loadImage(R.drawable.fire);
+		
+		loadAudio(R.raw.click);
 	}
 
 }
