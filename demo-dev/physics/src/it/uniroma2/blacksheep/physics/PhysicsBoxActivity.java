@@ -2,7 +2,6 @@ package it.uniroma2.blacksheep.physics;
 
 import it.uniroma2.blacksheep.physics.R;
 import it.uniroma2.framework.Game;
-import it.uniroma2.framework.render.ImageMap;
 
 /***************************************************************************
  * @author Valentino Colatosti
@@ -29,16 +28,17 @@ public class PhysicsBoxActivity extends Game {
 	public void resources(){
 		
 		// load all game bitmap
-		ImageMap image=ImageMap.getIstance();
-		image.load(R.drawable.exitbutton);
-		image.load(R.drawable.ball);
-		image.load(R.drawable.creditsbutton);
-		image.load(R.drawable.sheep);
-		image.load(R.drawable.woodbackground);
-		image.load(R.drawable.woodbar);
-		image.load(R.drawable.startbutton);
-		image.load(R.drawable.ground);
-		image.load(R.drawable.credits);
-		image.load(R.drawable.okbutton);
+		loadImage(R.drawable.exitbutton);
+		loadImage(R.drawable.ball);
+		loadImage(R.drawable.creditsbutton);
+		loadImage(R.drawable.sheep);
+		loadImage(R.drawable.woodbackground);
+		loadImage(R.drawable.woodbar);
+		loadImage(R.drawable.startbutton);
+		loadImage(R.drawable.ground);
+		loadImage(R.drawable.credits);
+		loadImage(R.drawable.okbutton);
+		
+		loadAudio(R.raw.click);
     }
 }
