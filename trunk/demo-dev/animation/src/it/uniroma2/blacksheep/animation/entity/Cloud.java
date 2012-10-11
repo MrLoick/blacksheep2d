@@ -1,7 +1,6 @@
 package it.uniroma2.blacksheep.animation.entity;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 import it.uniroma2.blacksheep.animation.R;
 import it.uniroma2.framework.entity.ParallaxGameEntity;
 
@@ -33,8 +32,6 @@ private Bitmap backgroundCloud;
 		backgroundCloud=getBitmap(R.drawable.parallax_background_layer_mid);
 		
 		setBitmap(backgroundCloud);
-		
-		//Log.i("blacksheep", "Cloud ok **************");
 	}
 	
 

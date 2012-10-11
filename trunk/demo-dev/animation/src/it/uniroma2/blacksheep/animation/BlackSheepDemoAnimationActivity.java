@@ -1,12 +1,8 @@
 package it.uniroma2.blacksheep.animation;
 
 
-
-import android.util.Log;
-import it.uniroma2.blacksheep.animation.R;
 import it.uniroma2.framework.Game;
-import it.uniroma2.framework.render.ImageMap;
-import it.uniroma2.framework.audio.SoundClip;
+
 
 /***************************************************************************
  * @author Valentino Colatosti
@@ -29,20 +25,21 @@ import it.uniroma2.framework.audio.SoundClip;
 public class BlackSheepDemoAnimationActivity extends Game {
 	
 	public void resources(){
-		ImageMap imageMap=ImageMap.getIstance();
-		imageMap.load(R.drawable.startbutton);
-		imageMap.load(R.drawable.creditsbutton);
-		imageMap.load(R.drawable.exitbutton);
-		imageMap.load(R.drawable.parallax_background_layer_back);
-		imageMap.load(R.drawable.parallax_background_layer_front);
-		imageMap.load(R.drawable.parallax_background_layer_mid);
-		imageMap.load(R.drawable.walk);
-		imageMap.load(R.drawable.credits);	
-		imageMap.load(R.drawable.okbutton);
-		imageMap.load(R.drawable.horse);
 		
-		SoundClip soundClip=SoundClip.getIstance();
-		soundClip.load(R.drawable.click);
+		loadImage(R.drawable.startbutton);
+		loadImage(R.drawable.creditsbutton);
+		loadImage(R.drawable.exitbutton);
+		loadImage(R.drawable.parallax_background_layer_back);
+		loadImage(R.drawable.parallax_background_layer_front);
+		loadImage(R.drawable.parallax_background_layer_mid);
+		loadImage(R.drawable.walk);
+		loadImage(R.drawable.credits);	
+		loadImage(R.drawable.okbutton);
+		loadImage(R.drawable.horse);
+		
+		
+		loadAudio(R.raw.click);
+		
 	
 	}
 
