@@ -2,12 +2,11 @@ package it.uniroma2.blacksheep.physics.entity;
 
 
 import it.uniroma2.blacksheep.physics.R;
-import it.uniroma2.framework.physic.CollisionBox2D;
+import it.uniroma2.framework.physic.AdaptJBox2D;
 import it.uniroma2.framework.entity.GameEntity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.hardware.SensorEvent;
-import android.util.Log;
 import android.view.MotionEvent;
 
 
@@ -41,19 +40,15 @@ public class PhysicsSquare extends GameEntity {
 	
 	
 	public boolean draw(Canvas canvas){	
-		//Log.i("box2d","pointx: "+getPhysicsBody().getPosition().x+" pointy"+ getPhysicsBody().getPosition().y+" angle: "+getPhysicsBody().getAngle());
 		invader=sizeBitmap(invader);
         canvas.save();
         canvas.rotate(getAngle(),getPointX()+(getLengthX()/2),getPointY()+(getLengthY()/2));
         canvas.drawBitmap(invader, getPointX(), getPointY(), null);
 		canvas.restore();
 		
-		//canvas.drawBitmap(invader, getPointX(), getPointY(), null);
 		return true;
 	}
 
-	//private int x=100,y=100;
-	
 	private boolean drag=false;
 	
 	
@@ -82,13 +77,8 @@ public class PhysicsSquare extends GameEntity {
 	}
 	
 	public void onSensorChanged(SensorEvent event) {
-		//event.
-	    //final float alpha = 0.8;
-
- 
-		Log.i("box2d","gravity value0: "+event.values[0]+" value1: "+event.values[1]+" timestamp "+event.timestamp);
-
-		CollisionBox2D.getIstance().setGravity(event.values[0],event.values[1]);
+		
+		AdaptJBox2D.getIstance().setGravity(event.values[0],event.values[1]);
 		
 		//Log.i("box2d","gravity 0"+event.values[0]+" 1 "+event.values[1]+" timestamp "+event.timestamp);
 	}	

@@ -49,6 +49,7 @@ public class ExitButton extends GameEntity {
 
 			if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
 					&& MotionEvent.ACTION_UP == motionEvent.getAction()) {
+				play(R.raw.click);
 				sendMessage("EXIT");
 			}
 
