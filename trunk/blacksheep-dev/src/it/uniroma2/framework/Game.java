@@ -2,13 +2,14 @@ package it.uniroma2.framework;
 
 import java.util.Properties;
 
+import it.uniroma2.framework.audio.Audio;
 import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.event.RTSimulationKernel;
 import it.uniroma2.framework.mind.MindManager;
-import it.uniroma2.framework.physic.CollisionBox2D;
+import it.uniroma2.framework.physic.AdaptJBox2D;
 import it.uniroma2.framework.render.GameView;
-import it.uniroma2.framework.render.Render;
+import it.uniroma2.framework.render.ImageMap;
 import it.uniroma2.framework.stage.Stage;
 import it.uniroma2.framework.stage.StageManager;
 import it.uniroma2.framework.xml.SaxXmlParser;
@@ -52,6 +53,9 @@ public class Game extends Activity {
 	private static float scaleWidth;
 	
 	private GameView gameView;
+	
+	private ImageMap imageMap;
+	private Audio soundClip;
 	
 	public static Context getContext(){
 		return context;
@@ -116,29 +120,19 @@ public class Game extends Activity {
         StageManager stageManager=StageManager.getIstance();
         kernel.register(stageManager);
         
+        
+        imageMap=ImageMap.getIstance();
+        soundClip=Audio.getIstance();
         resources();       
         
         new Thread(MindManager.getIstance()).start();
-        //new Thread()
-        new Thread(CollisionBox2D.getIstance()).start();
-       // GameLifeCycle cycle= new GameLifeCycle();
-        
-       /* cycle.setRun(true);
-        new Thread(cycle).start();*/
-        
-        
-      
-        
+        new Thread(AdaptJBox2D.getIstance()).start();
         
         new SaxXmlParserMessage().parse();
         new SaxXmlParser().parse();
         
         new ExitStage("EXIT",null);  
         
-        /*while(true){
-        	MindManager.getIstance().run();
-        	CollisionBox2D.getIstance().run();
-        }*/
            
     }
     
@@ -170,17 +164,11 @@ public class Game extends Activity {
     
     public void onStop(){
     	super.onStop();
-    	//StageManager.getIstance().destroy();
     	Log.i("blacksheep"," onStop");
-    	//gameView.surfaceDestroyed(gameView);
-    	//setContentView(null);
-    	//this.finish();
-    	//onDestroy();
     }
     
     public void onDestroy(){
     	super.onDestroy();
-    	//StageManager.getIstance().destroy();
     	Log.i("blacksheep"," onDestroy");
     }
     
@@ -197,8 +185,14 @@ public class Game extends Activity {
     	
     }
     
+    public void loadAudio(int resId){
+    	soundClip.load(resId);
+    }
     
-    // resources 
+    public void loadImage(int resId){
+    	imageMap.load(resId);
+    }
+   
     public void resources(){
     	
     }

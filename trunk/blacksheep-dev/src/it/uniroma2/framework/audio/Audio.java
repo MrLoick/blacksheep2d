@@ -28,17 +28,17 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
-public class SoundClip {
+public class Audio {
 	
 	private SoundPool soundPool;
 	private HashMap<Integer, Integer> soundPoolMap;
 	
-	private static SoundClip soundClip;
+	private static Audio soundClip;
 	
 	private Context context;
 	private AudioManager audioManager;
 	
-	private SoundClip(){
+	private Audio(){
 		soundPool=new SoundPool(4, AudioManager.STREAM_MUSIC, 0);
 		//ContextReference contextReference = ContextReference.getIstance();
 		context= Game.getContext();
@@ -47,9 +47,9 @@ public class SoundClip {
 		
 	}
 	
-	public static SoundClip getIstance(){
+	public static Audio getIstance(){
 		if(soundClip==null)
-			soundClip= new SoundClip();
+			soundClip= new Audio();
 		return soundClip;
 		
 	}
@@ -61,23 +61,8 @@ public class SoundClip {
 	}*/
 	
 	public void load(int resId){
-		//int status=1;
 		int soundId=soundPool.load(context, resId, 1);
 		soundPoolMap.put(resId,soundId);
-		
-		/*soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener(){
-
-			public void onLoadComplete(SoundPool soundPool, int sampleId,
-					int status) {
-				// TODO Auto-generated method stub
-				//status=0;
-				Log.i("musica", "callback");
-			}	
-		});*/
-		/*while(status!=0){
-			Log.i("musica", "controllo status");
-		}*/
-		
 	}
 	
 	public void play(int resId){
