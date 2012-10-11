@@ -9,8 +9,6 @@ import java.util.List;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 
-import android.util.Log;
-
 /*******************************************************************************
  * 
  * @author Valentino Colatosti
@@ -32,7 +30,7 @@ import android.util.Log;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-public class PhysicObj implements IPhysicObj {
+public class PhysicObjJBox2d implements IPhysicObj {
 	
 	//private BodyDef physicsBodyDef;
 	public static final int BOX=0;
@@ -50,7 +48,6 @@ public class PhysicObj implements IPhysicObj {
 	private boolean dynamic=false;
 	private int shapeType= BOX;
 	
-	//polygon def
 	private float friction;
 	private float density;
 	private float angle;
@@ -62,12 +59,10 @@ public class PhysicObj implements IPhysicObj {
 	private float mass=0;
 	private List<Vec2> vertexList=null;
 	
-	//private Vec2 point;
-	
 	private GameEntity gameEntity;
 	
 	
-	public PhysicObj(GameEntity gameEntity){
+	public PhysicObjJBox2d(GameEntity gameEntity){
 		this.gameEntity=gameEntity;
 	}
 	
@@ -92,8 +87,8 @@ public class PhysicObj implements IPhysicObj {
 
 
 	public void sync(){
-		gameEntity.setPointX((int) (((body.getPosition().x/Game.getScaleWidth())*CollisionBox2D.RATIO)-((gameEntity.getLengthX()/Game.getScaleWidth())/2)));
-		gameEntity.setPointY((int) (((body.getPosition().y/Game.getScaleHeight())*CollisionBox2D.RATIO)-((gameEntity.getLengthY()/Game.getScaleHeight())/2)));
+		gameEntity.setPointX((int) (((body.getPosition().x/Game.getScaleWidth())*AdaptJBox2D.RATIO)-((gameEntity.getLengthX()/Game.getScaleWidth())/2)));
+		gameEntity.setPointY((int) (((body.getPosition().y/Game.getScaleHeight())*AdaptJBox2D.RATIO)-((gameEntity.getLengthY()/Game.getScaleHeight())/2)));
 		angle=(float) Math.toDegrees(body.getAngle());
 	}
 	
@@ -199,10 +194,10 @@ public class PhysicObj implements IPhysicObj {
 		//Log.i("blacksheep","body position x"+body.getPosition().x+" y "+body.getPosition().y);
 		//Log.i("blacksheep","valori ingresso funzione x "+px+" y "+py);
 		
-		float pointX=px/CollisionBox2D.RATIO;
-		float pointY=py/CollisionBox2D.RATIO;
-		float lengthX=gameEntity.getLengthX()/CollisionBox2D.RATIO;
-		float lengthY=gameEntity.getLengthY()/CollisionBox2D.RATIO;
+		float pointX=px/AdaptJBox2D.RATIO;
+		float pointY=py/AdaptJBox2D.RATIO;
+		float lengthX=gameEntity.getLengthX()/AdaptJBox2D.RATIO;
+		float lengthY=gameEntity.getLengthY()/AdaptJBox2D.RATIO;
 		
 		
 		 p.x=pointX+lengthX/2;
@@ -212,7 +207,7 @@ public class PhysicObj implements IPhysicObj {
 		body.setTransform(p, body.getAngle());
 		//CollisionBox2D.getIstance().moveBody(body, p);
 		
-		Log.i("blacksheep","valori uscita x "+p.x+" y "+p.y);
+		//Log.i("blacksheep","valori uscita x "+p.x+" y "+p.y);
 		
 	}
 	

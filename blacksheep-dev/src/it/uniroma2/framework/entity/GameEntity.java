@@ -17,18 +17,17 @@ import android.hardware.SensorManager;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import it.uniroma2.framework.Game;
-import it.uniroma2.framework.audio.SoundClip;
+import it.uniroma2.framework.audio.Audio;
 import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.IPerceptor;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.event.RTSimulationKernel;
 import it.uniroma2.framework.input.ITouchable;
-import it.uniroma2.framework.input.KeyManager;
 import it.uniroma2.framework.input.TouchManager;
 import it.uniroma2.framework.mind.IMind;
 import it.uniroma2.framework.mind.MindManager;
-import it.uniroma2.framework.physic.CollisionBox2D;
-import it.uniroma2.framework.physic.PhysicObj;
+import it.uniroma2.framework.physic.AdaptJBox2D;
+import it.uniroma2.framework.physic.PhysicObjJBox2d;
 import it.uniroma2.framework.render.ImageMap;
 import it.uniroma2.framework.render.Render;
 
@@ -63,7 +62,7 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	private int lengthX;
 	private int lengthY;
 	
-	private PhysicObj physicsObj;
+	private PhysicObjJBox2d physicsObj;
 	private boolean physics=false;
 
 	private static SensorManager sensorManager=(SensorManager) Game.getContext().getSystemService(Context.SENSOR_SERVICE);
@@ -71,6 +70,8 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	
 	private static final int displayHeight=Game.getContext().getResources().getDisplayMetrics().heightPixels;
 	private static final int displayWidth=Game.getContext().getResources().getDisplayMetrics().widthPixels;
+	
+	private Audio audio=Audio.getIstance();
 	
 	public final Bitmap getBitmap(int resId){
 		//return BitmapFactory.decodeResource(Game.getContext().getResources(), resId );
@@ -94,16 +95,12 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	
 	public GameEntity(){
 		
-		physicsObj=new PhysicObj(this);
-		//physicsBodyDef=new BodyDef();
-		//uper(ContextReference.getIstance().getContext());
-		//sensorManager =(SensorManager) ContextReference.getIstance().getContext().getSystemService(Context.SENSOR_SERVICE);
-		
+		physicsObj=new PhysicObjJBox2d(this);	
 	}
 		
 	public final void register(){
 		//physicsObj.autoset();
-		  CollisionBox2D.getIstance().add(physicsObj);
+		  AdaptJBox2D.getIstance().add(physicsObj);
 		  TouchManager.getIstance().add(this);
 	      //KeyManager.getIstance().add(this);
 	      //RenderReference.getIstance().getRender().add(this);
@@ -112,7 +109,6 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	      
 	      //sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME, handler)//
 	      sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
-	
 	      //AccelerometerManager.getIstance().registerListner(this);
 	}
 	
@@ -121,7 +117,7 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 
 	public final void unregister() {
 
-		CollisionBox2D.getIstance().destroy(physicsObj);
+		AdaptJBox2D.getIstance().destroy(physicsObj);
 		TouchManager.getIstance().remove(this);
 		//KeyManager.getIstance().remove(this);
 		//RenderReference.getIstance().getRender().remove(this);
@@ -131,8 +127,8 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	}
 	
 	
-	public final SoundClip getSoundClip(){
-		return SoundClip.getIstance();
+	public final Audio getSoundClip(){
+		return Audio.getIstance();
 	}
 	
 	public boolean mind(){
@@ -221,6 +217,10 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	public void onSensorChanged(SensorEvent event) {
 		sensorManager.unregisterListener(this);
 	
+	}
+	
+	public void play(int resId){
+		audio.play(resId);		
 	}
 
 
