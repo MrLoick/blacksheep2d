@@ -18,7 +18,7 @@ import android.sax.EndElementListener;
 import android.sax.EndTextElementListener;
 import android.sax.RootElement;
 import android.sax.StartElementListener;
-import android.util.Log;
+//import android.util.Log;
 import android.util.Xml;
 
 
@@ -64,14 +64,14 @@ public class SaxXmlParserStage {
 		}
 		
 	public SaxXmlParserStage(String filename, Stage stage) {
-		Log.i("blacksheep", "SaxParserStage");
+		//Log.i("blacksheep", "SaxParserStage");
 		Resources resources = Game.getContext().getResources();
 		AssetManager assetManager = resources.getAssets();
 		this.stage=stage;
 		beans = new HashMap<String, GameEntity>();
 		try {
 			rawResource =assetManager.open(filename);
-			Log.i("blacksheep", "SaxParserStage open resurce");
+			//Log.i("blacksheep", "SaxParserStage open resurce");
 		} catch (Exception e) {
 			//throw new RuntimeException(e);
 			e.printStackTrace();
@@ -80,12 +80,12 @@ public class SaxXmlParserStage {
 
 	public void parse() {
 		//final String id=new String();	
-		Log.i("blacksheep", "parse stage");
+		//Log.i("blacksheep", "parse stage");
 		RootElement root = new RootElement(BEGIN);
 		Element bean = root.getChild(BEAN);		
 		bean.setStartElementListener(new StartElementListener(){
 			public void start(Attributes attributes) {
-				Log.i("blacksheep", "attributes id"+attributes.getValue("id"));
+				//Log.i("blacksheep", "attributes id"+attributes.getValue("id"));
 				
 				GameEntity gameEntity;
 				
@@ -106,7 +106,7 @@ public class SaxXmlParserStage {
 			
 		bean.getChild(PROPERTY).setStartElementListener(new StartElementListener(){
 			public void start(Attributes attributes) {
-				Log.i("blacksheep", "property");
+				//Log.i("blacksheep", "property");
 				GameEntity gameEntity=(GameEntity) beans.get(id);
 				Method[] methods=gameEntity.getClass().getMethods();
 				String field=attributes.getValue("field");
@@ -126,7 +126,7 @@ public class SaxXmlParserStage {
 										methods[i].invoke(gameEntity, new Object[] { Boolean.parseBoolean(attributes.getValue("value"))});
 							
 								
-								Log.i("blacksheep", "angle"+gameEntity.getAngle());
+								//Log.i("blacksheep", "angle"+gameEntity.getAngle());
 							}
 							
 					}
@@ -139,14 +139,14 @@ public class SaxXmlParserStage {
 		});
 		bean.getChild(PROPERTY).setEndTextElementListener(new EndTextElementListener(){
 			public void end(String body) {
-				Log.i("blacksheep", "property"+body);
+				//Log.i("blacksheep", "property"+body);
 			}
 		});
 		
 		bean.setEndElementListener(new EndElementListener(){
 
 			public void end() {
-				Log.i("blacksheep", "end beans");
+				//Log.i("blacksheep", "end beans");
 				
 				stage.add((GameEntity) beans.get(id));
 			}

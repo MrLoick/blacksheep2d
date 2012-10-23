@@ -13,7 +13,7 @@ import android.content.res.Resources;
 import android.sax.Element;
 import android.sax.RootElement;
 import android.sax.StartElementListener;
-import android.util.Log;
+//import android.util.Log;
 import android.util.Xml;
 
 /*******************************************************************************
@@ -47,7 +47,7 @@ public class SaxXmlParser {
 	private InputStream rawResource;
 		
 	public SaxXmlParser() {
-		Log.i("blacksheep", "SaxParser");
+		//Log.i("blacksheep", "SaxParser");
 		Resources resources = Game.getContext().getResources();
 		AssetManager assetManager = resources.getAssets();
 		try {
