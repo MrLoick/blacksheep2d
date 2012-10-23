@@ -7,13 +7,15 @@
 		<property field="pointY" value="200" />
 		<property field="lengthX" value="480" />
 		<property field="lengthY" value="120" />
-	</bean> 
+		<property field="loop" value="10000"/>
+	</bean>
 	
 	<bean id="test" class="it.uniroma2.blacksheep.animation.entity.Cloud">
 	    <property field="pointX" value="0" />
 		<property field="pointY" value="60" />
 		<property field="lengthX" value="480" />
 		<property field="lengthY" value="40" />
+		<property field="loop" value="20000"/>
 	</bean> 
 	
 	
