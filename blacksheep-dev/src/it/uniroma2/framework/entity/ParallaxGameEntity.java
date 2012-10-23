@@ -39,7 +39,8 @@ public class ParallaxGameEntity extends GameEntity {
 	//private int spriteWidth;	// the width of the sprite to calculate the cut out rectangle
 	//private int spriteHeight;	// the height of the sprite
 	private int newX=0;
-	private int bgMoveX=0;
+	private int bitmapMoveX=0;
+	private int loop;			//milliseconds for loop the bitmap
 	
 	
 	
@@ -100,38 +101,63 @@ public class ParallaxGameEntity extends GameEntity {
 	// the draw method which draws the corresponding frame
 	public boolean draw(Canvas canvas) {
 		//if(run){
-			update(System.currentTimeMillis());
+			//update(System.currentTimeMillis());
 			
 		//}
-		Log.i("blacksheep", "draw cloud ************");
+		//
+		
 		bitmap=sizeBitmap(bitmap);
 		//canvas.drawBitmap(bitmap, getPointX(), getPointY(), null);
 		
+		//long gameTime=System.currentTimeMillis();
+		long currentTime =System.currentTimeMillis();
 		
-		bgMoveX = bgMoveX - 1;
+		long diff =currentTime-frameTicker;
 		
-		newX = bitmap.getWidth() - (-bgMoveX);
+		//calculate scroll
+		float scroll=getLengthX()*((float)(diff)/(float)(loop));
+		
+		Log.i("blacksheep", "cmt "+currentTime +" frameTicker "+frameTicker+" diff "+diff+" scroll "+scroll);
+		
+		frameTicker=currentTime;
+
+		
+		bitmapMoveX = (int) (bitmapMoveX - scroll);
+			
+		newX = bitmap.getWidth() - (-bitmapMoveX);
+			
+	
+		
+		
+		//bitmapMoveX = bitmapMoveX - 1;
+		
+		//newX = bitmap.getWidth() - (-bitmapMoveX);
 		
 		
 		 // if we have scrolled all the way, reset to start
         if (newX <= 0) {
-            bgMoveX = 0;
+            bitmapMoveX = 0;
             // only need one draw
-            canvas.drawBitmap(bitmap, bgMoveX, getPointY(), null);
+            canvas.drawBitmap(bitmap, bitmapMoveX, getPointY(), null);
 
         } else {
             // need to draw original and wrap
-            canvas.drawBitmap(bitmap, bgMoveX,getPointY(), null);
+            canvas.drawBitmap(bitmap, bitmapMoveX,getPointY(), null);
             canvas.drawBitmap(bitmap, newX, getPointY(), null);
         }
-		// where to draw the sprite
-		/*Rect destRect = new Rect(gameEntity.getPointX(), gameEntity.getPointY(), gameEntity.getPointX() + gameEntity.getLengthX(),gameEntity.getPointY() + gameEntity.getLengthX());
 		
-		
-		canvas.drawBitmap(bitmap, sourceRectA, destRect, null);
-		canvas.drawBitmap(bitmap, sourceRectB, destRect, null);*/
         
         return true;
+	}
+
+
+	public int getLoop() {
+		return loop;
+	}
+
+
+	public void setLoop(int loop) {
+		this.loop = loop;
 	}
 
 }

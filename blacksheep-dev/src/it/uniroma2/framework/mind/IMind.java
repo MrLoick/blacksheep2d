@@ -23,6 +23,6 @@ package it.uniroma2.framework.mind;
 
 public interface IMind {
 
-	public boolean mind();
+	public void mind();
 
 }

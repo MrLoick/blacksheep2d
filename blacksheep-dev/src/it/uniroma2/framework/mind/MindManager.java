@@ -73,12 +73,11 @@ public class MindManager implements Runnable{//Thread {
 		
 	
 	public void run() {
-		//while(run){
-			for (int index = 0; index < mindList.size(); index++)
-			if (!mindList.get(index).mind())
-				remove(mindList.get(index));
-		//}
-		
+
+		for (int index = 0; index < mindList.size(); index++)
+			mindList.get(index).mind();
+				
+
 		handler.postDelayed(this, 30);
 	}
 

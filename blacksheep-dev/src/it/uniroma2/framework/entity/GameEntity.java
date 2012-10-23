@@ -131,8 +131,8 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 		return Audio.getIstance();
 	}
 	
-	public boolean mind(){
-		return false;
+	public void mind(){
+		MindManager.getIstance().remove(this);
 	}
 
 	public void receiveEvent(Event event){
