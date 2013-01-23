@@ -39,6 +39,13 @@
 		<property field="lengthY" value="20" />
     </bean> 
     
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Grid">
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.EndGame">
+        <property field="deathCount" value="8" />
+    </bean>
+    
     <!-- line 1 -->
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="15" />
@@ -54,7 +61,7 @@
     	<property field="lengthX" value="30" />
 		<property field="lengthY" value="20" />
 		<property field="dynamic" value="true" />
-    </bean>
+    </bean> 
     
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="105" />

@@ -3,4 +3,5 @@
 <bean id="mainstage" message="MAINMENU"/>
 <bean id="creditstage" message="CREDIT"/>
 <bean id="gamestage" message="STARTGAME"/>
+<bean id="winstage" message="WINSTAGE"/>
 </begin>
