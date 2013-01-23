@@ -32,13 +32,16 @@ public class Invaders extends GameEntity {
 	
 	private Bitmap invaders;
 	
-	private boolean left;
+	//private boolean left;
+	
+	private int row;
+	private int column;
 	
 	
 	public Invaders (){
 		
 		invaders=getBitmap(R.drawable.invaders1);
-		left=true;
+		//left=true;
 		
 	}
 
@@ -50,20 +53,23 @@ public class Invaders extends GameEntity {
 	
 	public void receiveEvent(Event event) {
 		
-		if("INVERTLEFT".equals(event.getMessage().getText())/*&& active==false*/){
-			left=true;
+		
+		if("MOVE".equals(event.getMessage().getText())){
+				
+				int px=((Integer) event.getMessageInfo().get("DELTAX"));
+				
+				moveEntity(getPointX()+px,getPointY());
+								
 		}
-		if("INVERTRIGHT".equals(event.getMessage().getText())/*&& active==false*/){
-			left=false;
-		}
+		
 	
 	}
 	
 	
-	private long startTime;
+	//private long startTime;
 	//private long elapsed;
 	
-	private long getElapsed(){
+	/*private long getElapsed(){
 		long elapsed=0;
 		if(startTime!=0){
 		
@@ -71,47 +77,65 @@ public class Invaders extends GameEntity {
 		}								
 		startTime = System.currentTimeMillis();
 		return elapsed;
-	}
+	}*/
 	
-	private float speedX=3;
+	//private float speedX=3;
 	
-	public boolean mind(){
-		float delta=0;
-				
+	public void mind(){
+		//float delta=0;
+						
+		//long elapsed= getElapsed();
+		//Log.i("blacksheep","INVADERS MIND "+elapsed);
 		
-		long elapsed= getElapsed();
-		Log.i("blacksheep","INVADERS MIND "+elapsed);
+		//delta =(speedX * (elapsed / 25f));
 		
-		delta =(speedX * (elapsed / 25f));
-		
-		Log.i("blacksheep","delta "+ delta);
+		/*Log.i("blacksheep","delta "+ delta);
 		if(left){
 			moveEntity(getPointX()-(int)delta,getPointY());
 		}
 		else{
 			moveEntity(getPointX()+(int)delta,getPointY());
-		}
+		}*/
 
-		if((getPointX()-3)<0)
+		if((getPointX())<0)
 			sendMessage("INVERTRIGHT");
 			
-		if((getPointX()+3)>getDisplayWidth()-getLengthX())			
+		if((getPointX())>getDisplayWidth()-getLengthX())			
 			sendMessage("INVERTLEFT");
-		
-		return true;
 	}
 	
 	public boolean receiveCollisionEvent(Contact contact){
 		Log.i("blacksheep","# invader receive collision event");
 		if(contact.m_fixtureA.getUserData() instanceof Fire){
 			Log.i("blacksheep","#fire è a");
+			sendMessage("DEATH");
 			unregister();
 		}
 		if(contact.m_fixtureB.getUserData() instanceof Fire){	
 			Log.i("blacksheep","# fire è b");
+			sendMessage("DEATH");
 			unregister();
 		}
 		return true;	
 	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public void setRow(int row) {
+		this.row = row;
+	}
+
+	public int getColumn() {
+		return column;
+	}
+
+	public void setColumn(int column) {
+		this.column = column;
+	}
+	
+	
+	
 
 }

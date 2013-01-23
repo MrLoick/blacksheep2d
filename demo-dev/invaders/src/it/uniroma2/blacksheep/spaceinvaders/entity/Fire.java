@@ -50,9 +50,8 @@ public class Fire extends GameEntity {
 	
 	
 	public void receiveEvent(Event event) {
-			
 		if("FIRE".equals(event.getMessage().getText())/*&& active==false*/){
-			Log.i("blacksheep", "FIRE event ok");	
+			//Log.i("blacksheep", "FIRE event ok");	
 			int px=((Integer) event.getMessageInfo().get("POINTX"));
 			int py=((Integer) event.getMessageInfo().get("POINTY"));
 			Log.i("blacksheep", "value in message pointX "+px+" pointY "+py);
@@ -67,37 +66,36 @@ public class Fire extends GameEntity {
 	}
 	
 
-	public boolean mind(){
+	public void mind(){
 		
 		if(active){
 			if(getPointY()>=0){
-				Log.i("blacksheep", "mind in run shoot "+getPointY());
+				//Log.i("blacksheep", "mind in run shoot "+getPointY());
 				//setPointY(getPointY()-4);
 				moveEntity(getPointX(),getPointY()-4);
 			}
 			if(getPointY()<0){
-				Log.i("blacksheep", "mind sparizione");
+				//Log.i("blacksheep", "mind sparizione");
 				active=false;
 				//moveEntity(-10,-10);
 				//setPointX(-10);
 				//setPointY(-10);
 			}	
 		}
-		return true;
 	}
 	
 	
 	public boolean receiveCollisionEvent(Contact contact){
-		Log.i("blacksheep","######## fire receive collision event");
+		//Log.i("blacksheep","######## fire receive collision event");
 		
 		if(contact.m_fixtureA.getUserData() instanceof Invaders){
 			moveEntity(-10,-10);
-			Log.i("blacksheep","invaders è a");
+			Log.i("blacksheep","invaders è a collision");
 		}
 		
 		if(contact.m_fixtureB.getUserData() instanceof Invaders){
 			moveEntity(-10,-10);
-			Log.i("blacksheep","invaders è b");
+			Log.i("blacksheep","invaders è b collision");
 		}
 				
 		return true;	

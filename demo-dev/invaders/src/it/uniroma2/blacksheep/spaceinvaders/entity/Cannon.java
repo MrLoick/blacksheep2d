@@ -47,14 +47,14 @@ public class Cannon extends GameEntity {
 	}
 	
 	public void receiveEvent(Event event){
-		Log.i("blacksheep", "evento ricevuto §§§§§§§§§§§§§§§§§§§§§§§§ "+event.getMessage().getText());
+		//Log.i("blacksheep", "evento ricevuto §§§§§§§§§§§§§§§§§§§§§§§§ "+event.getMessage().getText());
 		if("MOVELEFT".equals(event.getMessage().getText())){
-			Log.i("blacksheep", "leftmove §§§§§§§§§§§§§§§§§§§§§§§§");
+			//Log.i("blacksheep", "leftmove §§§§§§§§§§§§§§§§§§§§§§§§");
 			moveEntity(getPointX()-3,getPointY());
 		}
 			
 		if("MOVERIGHT".equals(event.getMessage().getText())){
-			Log.i("blacksheep", "MOVERIGHT §§§§§§§§§§§§§§§§§§§§§§§§");
+			//Log.i("blacksheep", "MOVERIGHT §§§§§§§§§§§§§§§§§§§§§§§§");
 			moveEntity(getPointX()+3,getPointY());
 		}
 		
@@ -65,13 +65,9 @@ public class Cannon extends GameEntity {
 			messageInfo.put("POINTX", getPointX()+(getLengthX()/2));
 			messageInfo.put("POINTY", getPointY());
 			
-			Log.i("blacksheep", "fire pountX "+getPointX()+" pointY "+getPointY());
+			//Log.i("blacksheep", "fire pointX "+getPointX()+" pointY "+getPointY());
 			
 			sendMessage("FIRE",messageInfo);
-			
-			//setPointY((Integer) event.getMessageInfo().get("POINTY"));
-			
-			//sendMessage("FIRE");
 		}
 		
 	}
