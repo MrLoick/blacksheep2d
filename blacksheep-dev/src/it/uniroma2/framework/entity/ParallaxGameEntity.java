@@ -44,7 +44,7 @@ public class ParallaxGameEntity extends GameEntity {
 	
 	
 	
-	public ParallaxGameEntity(/*, int width, int height*/) {
+	public ParallaxGameEntity() {
 		//this.bitmap = bitmap;
 		
 		//currentFrame = 0;
@@ -66,46 +66,11 @@ public class ParallaxGameEntity extends GameEntity {
 		this.bitmap = bitmap;
 	}
 
-/*	public int getFrameNr() {
-		return frameNr;
-	}
-	public void setFrameNr(int frameNr) {
-		this.frameNr = frameNr;
-	}
-	*/
-	public int getFramePeriod() {
-		return framePeriod;
-	}
-	public void setFramePeriod(int framePeriod) {
-		this.framePeriod = framePeriod;
-	}
-	
-	
-	private void update(long gameTime) {
-		if (gameTime > frameTicker + framePeriod) {
-			frameTicker = gameTime;
-			// increment the frame
-			/*currentFrame++;
-			if (currentFrame >= frameNr) {
-				currentFrame = 0;
-			}*/
-		}
-		// define the rectangle to cut out sprite
-		//this.sourceRect.left = currentFrame * spriteWidth;
-		//this.sourceRect.right = this.sourceRect.left + spriteWidth;
-		//sourceRectA.left=sourceRectA.left+5;
-		
-		//sourceRectB.left=;
-	}
+
 	
 	// the draw method which draws the corresponding frame
-	public boolean draw(Canvas canvas) {
-		//if(run){
-			//update(System.currentTimeMillis());
+	public final boolean draw(Canvas canvas) {
 			
-		//}
-		//
-		
 		bitmap=sizeBitmap(bitmap);
 		//canvas.drawBitmap(bitmap, getPointX(), getPointY(), null);
 		
@@ -117,7 +82,7 @@ public class ParallaxGameEntity extends GameEntity {
 		//calculate scroll
 		float scroll=getLengthX()*((float)(diff)/(float)(loop));
 		
-		Log.i("blacksheep", "cmt "+currentTime +" frameTicker "+frameTicker+" diff "+diff+" scroll "+scroll);
+		//Log.i("blacksheep", "cmt "+currentTime +" frameTicker "+frameTicker+" diff "+diff+" scroll "+scroll);
 		
 		frameTicker=currentTime;
 
@@ -125,13 +90,6 @@ public class ParallaxGameEntity extends GameEntity {
 		bitmapMoveX = (int) (bitmapMoveX - scroll);
 			
 		newX = bitmap.getWidth() - (-bitmapMoveX);
-			
-	
-		
-		
-		//bitmapMoveX = bitmapMoveX - 1;
-		
-		//newX = bitmap.getWidth() - (-bitmapMoveX);
 		
 		
 		 // if we have scrolled all the way, reset to start

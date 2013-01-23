@@ -2,21 +2,28 @@ package it.uniroma2.framework.render;
 
 import it.uniroma2.framework.input.KeyManager;
 import it.uniroma2.framework.input.TouchManager;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
+@SuppressLint("NewApi")
 public class GameGLSurfaceView extends GLSurfaceView {
 	
+	public GameGLSurfaceView(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+	}
+
 	private GLRenderer glRenderer;
 
-	public GameGLSurfaceView(Context context) {
+	/*public GameGLSurfaceView(Context context) {
 		super(context);
 		
 		getHolder().addCallback(this);
-		glRenderer = new GLRenderer(getHolder()/*, getContext()*/);
+		glRenderer = new GLRenderer(getHolder(), getContext());
 		
 		Log.i("game", "GameView1");
 		setFocusable(true);
@@ -37,7 +44,7 @@ public class GameGLSurfaceView extends GLSurfaceView {
 		TouchManager touchManager=TouchManager.getIstance();
 		return touchManager.onTouchEvent(motionEvent);
 		
-	 }
+	 }*/
 
 
 }

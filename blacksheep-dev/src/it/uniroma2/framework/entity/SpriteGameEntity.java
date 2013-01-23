@@ -3,6 +3,7 @@ package it.uniroma2.framework.entity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.util.Log;
 
 
 /*******************************************************************************
@@ -59,16 +60,63 @@ public class SpriteGameEntity extends GameEntity {
 	}
 	
 	
-	
-	public boolean draw(Canvas canvas) {
-		//Log.i("blacksheep", "draw sprite");
+	public final boolean draw(Canvas canvas){
 		
-		//update(System.currentTimeMillis());
+		bitmap=Bitmap.createScaledBitmap(bitmap, getLengthX()*frameNr, getLengthY()  , true);
+		
+		long currentTime =System.currentTimeMillis();
+		
+		long diff =currentTime-frameTicker;
+		
+		Log.i("blacksheep","currentTime "+currentTime+" frameTicker "+frameTicker+" diff "+diff);
+		
+		framePeriod=1000/fps;
+		
+		// calculate next frame step 
+		int nextFrame =(int) (diff/framePeriod);
+		
+		if(nextFrame>0){
+			frameTicker=currentTime;
+		}
+		
+		
+		if(currentFrame == 0){
+			sourceRect.set(0,0,getLengthX(),getLengthY());
+			Log.i("blacksheep","draw 0 ");
+			
+		}else{
+			//sourceRect.set(0,0,getLengthX(),getLengthY());
+			Log.i("blacksheep","draw frame"+currentFrame);
+			spriteWidth = bitmap.getWidth() / frameNr;
+			this.sourceRect.left = currentFrame * spriteWidth;
+			this.sourceRect.right = this.sourceRect.left + spriteWidth;
+			
+		}
+	
+		destRect.set(getPointX(), getPointY(), getPointX() + getLengthX(), getPointY() + getLengthY());
+		if (getAngle() != 0)
+			canvas.rotate(getAngle(), getPointX() + (getLengthX() / 2),	getPointY() + (getLengthY() / 2));
+		
+		
+		canvas.drawBitmap(bitmap, sourceRect, destRect, null);
+		
+		Log.i("blacksheep", "currentFrame "+currentFrame+" nextFrame "+nextFrame+" frameNr"+frameNr);
+		
+		currentFrame=(currentFrame+nextFrame)%frameNr;
+		Log.i("blacksheep", "prossimo frame"+currentFrame);
+		return true;
+	}
+	
+	
+	/*public final boolean draw(Canvas canvas) {		
+		
 		
 		update(System.currentTimeMillis());		
 		
 		
 		//Log.i("blacksheep", "scale bitmap parameter lengthX "+getLengthX()+" lengthY "+getLengthY() +" frame number"+ frameNr);
+		
+		
 		
 		bitmap=Bitmap.createScaledBitmap(bitmap, getLengthX()*frameNr, getLengthY()  , true);
 		//Log.i("blacksheep", "draw scaled");
@@ -86,9 +134,9 @@ public class SpriteGameEntity extends GameEntity {
 		//canvas.drawBitmap(bitmap, 0, 0, null);
 
 		return true;
-	}
+	}*/
 	
-	private void update(long gameTime) {
+	/*private void update(long gameTime) {
 		framePeriod=1000/fps;
 		if (gameTime > frameTicker + framePeriod) {
 			frameTicker = gameTime;
@@ -105,7 +153,7 @@ public class SpriteGameEntity extends GameEntity {
 		//sourceRect.bottom=getLengthY();
 		this.sourceRect.left = currentFrame * spriteWidth;
 		this.sourceRect.right = this.sourceRect.left + spriteWidth;
-	}
+	}*/
 	
 	public Bitmap getBitmap() {
 		return bitmap;

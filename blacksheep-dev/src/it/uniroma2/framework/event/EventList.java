@@ -27,8 +27,8 @@ import java.util.Timer;
 public class EventList {
 
 	private ArrayList<Event> eventList;
-	private long nextEventDelay;
-	private Timer timer;
+	//private long nextEventDelay;
+	//private Timer timer;
 
 
 	public EventList(){
@@ -40,7 +40,7 @@ public class EventList {
 	 */
 	public void storeEvent(Event event) 
 	{		
-		if (event.getDelay()>=0)
+		/*if (event.getDelay()>=0)
 		{
 			if(event.getDelay()!=0)
 			{
@@ -60,15 +60,16 @@ public class EventList {
 			}else
 			{
 				this.eventList.add(0,event);
-			}
+			}*/
 			
-			setNextEventDelay();
+			//setNextEventDelay();
 			
 			//System.out.println("rtSimulationKernel.EventList | storeEvent -> eventDelay: "+getNextEventDelay());
-			EventTaskScheduler ets = new EventTaskScheduler();
-			timer = new Timer();
-			timer.schedule(ets, getNextEventDelay());
-		}
+			//EventTaskScheduler ets = new EventTaskScheduler();
+			//timer = new Timer();
+			//timer.schedule(ets, getNextEventDelay());
+		//}
+		eventList.add(event);
 	}
 
 	/**
@@ -91,7 +92,7 @@ public class EventList {
 	 * 
 	 * @return next event delay to wait.
 	 */
-	private long getNextEventDelay()
+	/*private long getNextEventDelay()
 	{
 		return this.nextEventDelay;
 	}	
@@ -99,5 +100,5 @@ public class EventList {
 	private void setNextEventDelay()
 	{
 		this.nextEventDelay = getNextEvent().getDelay();
-	}
+	}*/
 }

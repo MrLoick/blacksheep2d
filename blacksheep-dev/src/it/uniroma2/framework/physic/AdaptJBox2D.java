@@ -15,6 +15,7 @@ import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 import org.jbox2d.dynamics.contacts.Contact;
+//import org.jbox2d.dynamics.joints.JointDef;
 
 import android.os.Handler;
 import android.util.Log;
@@ -40,7 +41,7 @@ import android.util.Log;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-public class AdaptJBox2D extends Thread implements Runnable {
+public class AdaptJBox2D implements Runnable {
 
 	private static AdaptJBox2D collisionBox2D;
 	private World world;
@@ -213,5 +214,9 @@ public class AdaptJBox2D extends Thread implements Runnable {
 	 * 
 	 * }
 	 */
+	
+	/*public void joint(PhysicObjJBox2d physicObjA, PhysicObjJBox2d physicObjB){
+		
+	}*/
 
 }

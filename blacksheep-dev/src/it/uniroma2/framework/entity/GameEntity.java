@@ -106,7 +106,6 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	      //RenderReference.getIstance().getRender().add(this);
 		  Render.getIstance().add(this);
 	      MindManager.getIstance().add(this);
-	      
 	      //sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME, handler)//
 	      sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
 	      //AccelerometerManager.getIstance().registerListner(this);
@@ -124,11 +123,6 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 		Render.getIstance().remove(this);
 		MindManager.getIstance().remove(this);
 		sensorManager.unregisterListener(this);
-	}
-	
-	
-	public final Audio getSoundClip(){
-		return Audio.getIstance();
 	}
 	
 	public void mind(){
@@ -241,7 +235,7 @@ public abstract class GameEntity implements IPerceptor, IDrawable, ITouchable, I
 	}
 	
 	//******************************
-	//integrazione oggetto fisico
+	//Description of physics object
 	//******************************
 	
 	public float getFriction() {

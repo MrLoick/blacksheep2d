@@ -79,8 +79,8 @@ public class Render extends Thread {
 			try {
 				canvas = surfaceHolder.lockCanvas();
 				synchronized (surfaceHolder) {
-
-					canvas.drawColor(Color.WHITE);
+					if(canvas!=null)
+						canvas.drawColor(Color.WHITE);
 					for(int i=0;i<drawableList.size();i++){
 						
 						try{
@@ -100,6 +100,7 @@ public class Render extends Thread {
 
 				}
 			}
+			//Log.i("blacksheep","render step 2");
 		}
 	}
             

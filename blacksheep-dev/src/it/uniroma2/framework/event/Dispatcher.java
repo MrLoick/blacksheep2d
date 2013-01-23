@@ -3,6 +3,8 @@ package it.uniroma2.framework.event;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 /*******************************************************************************
  * 
  * @author Valentino Colatosti
@@ -61,17 +63,21 @@ public class Dispatcher {
 	 */
 	
 	public void sendEvent(Event event){
-		event.setDelay(event.getDelay());
-		listaEventi.storeEvent(event);
-	}
-	
-	public void dispatchEvent(Event evento)
-	{
-		for(int i=0;i<registredList.size();i++)
-		{
-			((IPerceptor)registredList.get(i)).receiveEvent(evento);
+		//event.setDelay(event.getDelay());
+		//listaEventi.storeEvent(event);
+		for(int i=0;i<registredList.size();i++){
+			((IPerceptor)registredList.get(i)).receiveEvent(event);
 		}
 	}
+	
+	/*public void dispatchEvent(Event event)
+	{
+		for(int i=0;i<registredList.size();i++){
+			
+			Log.i("blacksheep", "event dispatcher event dispaching");
+			((IPerceptor)registredList.get(i)).receiveEvent(event);
+		}
+	}*/
 	
 	/**
 	 * permette di registrarsi nel Dispatcher per reicevere eventi 

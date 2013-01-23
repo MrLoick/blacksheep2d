@@ -1,14 +1,10 @@
 package it.uniroma2.framework.input;
 
-import it.uniroma2.framework.event.Event;
-import it.uniroma2.framework.event.Message;
-import it.uniroma2.framework.event.RTSimulationKernel;
-
 import java.util.ArrayList;
 
-import android.util.Log;
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.view.MotionEvent;
-import android.view.View;
 
 /*******************************************************************************
  * 
@@ -31,7 +27,8 @@ import android.view.View;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-public class TouchManager {
+@SuppressLint("NewApi")
+public class TouchManager extends AsyncTask<MotionEvent, Void, Void>{
 	
 	private static TouchManager touchManager;
 	
@@ -60,17 +57,27 @@ public class TouchManager {
 		touchableList.clear();
 	}
 	
-	public boolean onTouchEvent(MotionEvent motionEvent){
+	/*public boolean onTouchEvent(MotionEvent motionEvent){
 		  //RTSimulationKernel kernel=RTSimulationKernel.getIstance();
-		 /* Event event=kernel.requestEventIstance();
+		  Event event=kernel.requestEventIstance();
 		  event.set(Message.EVENT_TEST);
-		  kernel.SendEvent(event);*/
+		  kernel.SendEvent(event);
 		  
 		  for(int i=0;i<touchableList.size();i++){
 			if(!touchableList.get(i).onTouchEvent(motionEvent))
 				remove(touchableList.get(i));
 		}
+		doInBackground(motionEvent);
 		return true;
+	}*/
+
+	@Override
+	public Void doInBackground(MotionEvent... params) {
+		for(int i=0;i<touchableList.size();i++){
+			if(params[0]!=null)
+				touchableList.get(i).onTouchEvent(params[0]);
+		}
+		return null;
 	}
 	
 	//multitouch

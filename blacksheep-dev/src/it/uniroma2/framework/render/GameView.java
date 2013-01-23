@@ -36,6 +36,8 @@ import android.view.SurfaceView;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 	
 	private Render render;
+	
+	private TouchManager touchManager=TouchManager.getIstance();
 
 	public GameView(Context context) {
 		super(context);
@@ -90,8 +92,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 		//int id;
 		//MotionEvent event;
 	
-		TouchManager touchManager=TouchManager.getIstance();
-		touchManager.onTouchEvent(motionEvent);
+		
+		touchManager.doInBackground(motionEvent);
 		
 		return true;
 		
