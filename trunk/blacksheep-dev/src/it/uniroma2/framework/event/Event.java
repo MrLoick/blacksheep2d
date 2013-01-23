@@ -27,7 +27,7 @@ import java.util.HashMap;
 public class Event {
 
 
-	private long delay;
+	//private long delay;
 	//private String sender;
 	//private String messaggio;
 	private Message messaggio;
@@ -39,7 +39,7 @@ public class Event {
 	 */
 	public Event()
 	{
-		setDelay(0);
+		//setDelay(0);
 	}
 	
 	/**
@@ -51,7 +51,7 @@ public class Event {
 	public void set(Message messaggio)
 	{
 		this.messaggio=messaggio;
-		this.delay=0;
+		//this.delay=0;
 		//this.sender=sender;
 		//this.messaggio=messaggio;
 	}
@@ -70,7 +70,7 @@ public class Event {
 	 * imposta il tempo di delay per l'esecuzione di un evento
 	 * @param delay il tempo di attesa
 	 */
-	public void setDelay(long delay)
+	/*public void setDelay(long delay)
 	{
 		this.delay=delay;
 	}
@@ -79,7 +79,7 @@ public class Event {
 	{
 		//System.out.println("prova: "+this.delay);
 		return this.delay;
-	}
+	}*/
 	
 	/**
 	 * elimina i dati trasportati dall'evento
@@ -89,7 +89,7 @@ public class Event {
 	{
 		//this.sender=null;
 		this.messaggio=null;
-		setDelay(0);
+		//setDelay(0);
 	}
 
 	public Message getMessage() {

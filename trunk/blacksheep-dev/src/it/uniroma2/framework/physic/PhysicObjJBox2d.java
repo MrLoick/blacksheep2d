@@ -9,6 +9,8 @@ import java.util.List;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 
+import android.util.Log;
+
 /*******************************************************************************
  * 
  * @author Valentino Colatosti
@@ -197,18 +199,11 @@ public class PhysicObjJBox2d implements IPhysicObj {
 		float pointX=px/AdaptJBox2D.RATIO;
 		float pointY=py/AdaptJBox2D.RATIO;
 		float lengthX=gameEntity.getLengthX()/AdaptJBox2D.RATIO;
-		float lengthY=gameEntity.getLengthY()/AdaptJBox2D.RATIO;
-		
-		
+		float lengthY=gameEntity.getLengthY()/AdaptJBox2D.RATIO;	
 		 p.x=pointX+lengthX/2;
 		 p.y=pointY+lengthY/2;
-		
-		
 		body.setTransform(p, body.getAngle());
-		//CollisionBox2D.getIstance().moveBody(body, p);
-		
-		//Log.i("blacksheep","valori uscita x "+p.x+" y "+p.y);
-		
+				
 	}
 	
 	
