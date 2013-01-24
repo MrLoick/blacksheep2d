@@ -32,8 +32,6 @@ public class Invaders extends GameEntity {
 	
 	private Bitmap invaders;
 	
-	//private boolean left;
-	
 	private int row;
 	private int column;
 	
@@ -41,7 +39,6 @@ public class Invaders extends GameEntity {
 	public Invaders (){
 		
 		invaders=getBitmap(R.drawable.invaders1);
-		//left=true;
 		
 	}
 
@@ -53,6 +50,9 @@ public class Invaders extends GameEntity {
 	
 	public void receiveEvent(Event event) {
 		
+		if("DOWN".equals(event.getMessage().getText())){
+			moveEntity(getPointX(),getPointY()+10);
+		}
 		
 		if("MOVE".equals(event.getMessage().getText())){
 				
@@ -62,41 +62,12 @@ public class Invaders extends GameEntity {
 								
 		}
 		
+		
 	
 	}
 	
-	
-	//private long startTime;
-	//private long elapsed;
-	
-	/*private long getElapsed(){
-		long elapsed=0;
-		if(startTime!=0){
-		
-			elapsed=System.currentTimeMillis()-startTime;
-		}								
-		startTime = System.currentTimeMillis();
-		return elapsed;
-	}*/
-	
-	//private float speedX=3;
-	
 	public void mind(){
-		//float delta=0;
-						
-		//long elapsed= getElapsed();
-		//Log.i("blacksheep","INVADERS MIND "+elapsed);
 		
-		//delta =(speedX * (elapsed / 25f));
-		
-		/*Log.i("blacksheep","delta "+ delta);
-		if(left){
-			moveEntity(getPointX()-(int)delta,getPointY());
-		}
-		else{
-			moveEntity(getPointX()+(int)delta,getPointY());
-		}*/
-
 		if((getPointX())<0)
 			sendMessage("INVERTRIGHT");
 			

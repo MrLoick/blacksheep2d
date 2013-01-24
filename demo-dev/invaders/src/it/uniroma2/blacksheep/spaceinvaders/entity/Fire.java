@@ -50,18 +50,18 @@ public class Fire extends GameEntity {
 	
 	
 	public void receiveEvent(Event event) {
-		if("FIRE".equals(event.getMessage().getText())/*&& active==false*/){
+		if("FIRE".equals(event.getMessage().getText()) && active==false){
 			//Log.i("blacksheep", "FIRE event ok");	
 			int px=((Integer) event.getMessageInfo().get("POINTX"));
 			int py=((Integer) event.getMessageInfo().get("POINTY"));
-			Log.i("blacksheep", "value in message pointX "+px+" pointY "+py);
-			
+			//Log.i("blacksheep", "value in message pointX "+px+" pointY "+py);
+			play(R.raw.fire);
 			moveEntity(px, py);
-			Log.i("blacksheep", "fire start in pointX "+getPointX()+" pointY "+getPointY());				
+			//Log.i("blacksheep", "fire start in pointX "+getPointX()+" pointY "+getPointY());				
 			active=true;
 		}
 		
-		active=true;
+		//active=true;
 				
 	}
 	
@@ -72,12 +72,12 @@ public class Fire extends GameEntity {
 			if(getPointY()>=0){
 				//Log.i("blacksheep", "mind in run shoot "+getPointY());
 				//setPointY(getPointY()-4);
-				moveEntity(getPointX(),getPointY()-4);
+				moveEntity(getPointX(),getPointY()-10);
 			}
 			if(getPointY()<0){
-				//Log.i("blacksheep", "mind sparizione");
+				Log.i("blacksheep", "mind sparizione");
 				active=false;
-				//moveEntity(-10,-10);
+				moveEntity(-10,-10);
 				//setPointX(-10);
 				//setPointY(-10);
 			}	
@@ -86,7 +86,6 @@ public class Fire extends GameEntity {
 	
 	
 	public boolean receiveCollisionEvent(Contact contact){
-		//Log.i("blacksheep","######## fire receive collision event");
 		
 		if(contact.m_fixtureA.getUserData() instanceof Invaders){
 			moveEntity(-10,-10);
