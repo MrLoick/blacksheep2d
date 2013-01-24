@@ -33,10 +33,11 @@ public class Fire extends GameEntity {
 	private Bitmap fire;
 	//private boolean flag=false;
 	
-	private boolean active=false;
+	private boolean active;
 	
 	public Fire(){
 		fire = getBitmap(R.drawable.fire);
+		active=false;
 	}
 	
 	
