@@ -31,11 +31,10 @@ public class Grid extends GameEntity {
 			if (left) {
 				//messageInfo.put("DELTAX", -5);
 				sendMessage("MOVE", messageInfoSX);
-				sendMessage("DOWN");
+				
 			} else {
 				//messageInfo.put("DELTAX", 5);
 				sendMessage("MOVE", messageInfoDX);
-				sendMessage("DOWN");
 			}
 			timeTiker=currentTime;
 		}
@@ -44,9 +43,11 @@ public class Grid extends GameEntity {
 	public void receiveEvent(Event event) {
 
 		if ("INVERTLEFT".equals(event.getMessage().getText())) {
+			sendMessage("MOVEDOWN");
 			left = true;
 		}
 		if ("INVERTRIGHT".equals(event.getMessage().getText())) {
+			sendMessage("MOVEDOWN");
 			left = false;
 		}
 

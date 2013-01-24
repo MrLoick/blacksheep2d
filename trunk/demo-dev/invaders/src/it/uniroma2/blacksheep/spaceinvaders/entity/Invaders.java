@@ -34,12 +34,12 @@ public class Invaders extends GameEntity {
 	
 	private int row;
 	private int column;
-	
+	private static int loseLine;
 	
 	public Invaders (){
 		
 		invaders=getBitmap(R.drawable.invaders1);
-		
+		loseLine=getDisplayHeight()-(getDisplayHeight()/5);
 	}
 
 	public boolean draw(Canvas canvas){
@@ -50,7 +50,7 @@ public class Invaders extends GameEntity {
 	
 	public void receiveEvent(Event event) {
 		
-		if("DOWN".equals(event.getMessage().getText())){
+		if("MOVEDOWN".equals(event.getMessage().getText())){
 			moveEntity(getPointX(),getPointY()+10);
 		}
 		
@@ -61,9 +61,7 @@ public class Invaders extends GameEntity {
 				moveEntity(getPointX()+px,getPointY());
 								
 		}
-		
-		
-	
+
 	}
 	
 	public void mind(){
@@ -73,6 +71,10 @@ public class Invaders extends GameEntity {
 			
 		if((getPointX())>getDisplayWidth()-getLengthX())			
 			sendMessage("INVERTLEFT");
+		if((getPointY()+getLengthY())>=loseLine){
+			sendMessage("LOSESTAGE");
+		}
+		
 	}
 	
 	public boolean receiveCollisionEvent(Contact contact){
