@@ -42,6 +42,7 @@ public class SpaceInvadersActivity extends Game {
 		loadImage(R.drawable.fire);
 		
 		loadAudio(R.raw.click);
+		loadAudio(R.raw.fire);
 	}
 
 }

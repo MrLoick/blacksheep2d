@@ -31,9 +31,11 @@ public class Grid extends GameEntity {
 			if (left) {
 				//messageInfo.put("DELTAX", -5);
 				sendMessage("MOVE", messageInfoSX);
+				sendMessage("DOWN");
 			} else {
 				//messageInfo.put("DELTAX", 5);
 				sendMessage("MOVE", messageInfoDX);
+				sendMessage("DOWN");
 			}
 			timeTiker=currentTime;
 		}

@@ -50,40 +50,40 @@
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="15" />
 		<property field="pointY" value="40" />
-    	<property field="lengthX" value="30" />
-		<property field="lengthY" value="20" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
 		<property field="dynamic" value="true" />
     </bean>
     
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="60" />
 		<property field="pointY" value="40" />
-    	<property field="lengthX" value="30" />
-		<property field="lengthY" value="20" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
 		<property field="dynamic" value="true" />
     </bean> 
     
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="105" />
 		<property field="pointY" value="40" />
-    	<property field="lengthX" value="30" />
-		<property field="lengthY" value="20" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
 		<property field="dynamic" value="true" />
     </bean>
     
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="150" />
 		<property field="pointY" value="40" />
-    	<property field="lengthX" value="30" />
-		<property field="lengthY" value="20" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
 		<property field="dynamic" value="true" />
     </bean>
     
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="195" />
 		<property field="pointY" value="40" />
-    	<property field="lengthX" value="30" />
-		<property field="lengthY" value="20" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
 		<property field="dynamic" value="true" />
     </bean>
     
@@ -91,16 +91,16 @@
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="240" />
 		<property field="pointY" value="40" />
-    	<property field="lengthX" value="30" />
-		<property field="lengthY" value="20" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
 		<property field="dynamic" value="true" />
     </bean>
     
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="285" />
 		<property field="pointY" value="40" />
-    	<property field="lengthX" value="30" />
-		<property field="lengthY" value="20" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
 		<property field="dynamic" value="true" />
     </bean>
     
@@ -110,8 +110,8 @@
      <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="60" />
 		<property field="pointY" value="70" />
-    	<property field="lengthX" value="30" />
-		<property field="lengthY" value="20" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
 		<property field="dynamic" value="true" />
     </bean>
        
