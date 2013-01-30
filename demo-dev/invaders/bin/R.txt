@@ -9,10 +9,12 @@ int drawable ic_launcher 0x7f020007
 int drawable invader 0x7f020008
 int drawable invaders1 0x7f020009
 int drawable leftbutton 0x7f02000a
-int drawable okbutton 0x7f02000b
-int drawable rightbutton 0x7f02000c
-int drawable startbutton 0x7f02000d
-int drawable title 0x7f02000e
+int drawable lose 0x7f02000b
+int drawable okbutton 0x7f02000c
+int drawable rightbutton 0x7f02000d
+int drawable startbutton 0x7f02000e
+int drawable title 0x7f02000f
+int drawable win 0x7f020010
 int layout main 0x7f030000
 int raw click 0x7f040000
 int raw fire 0x7f040001

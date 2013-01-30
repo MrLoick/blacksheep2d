@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <begin>
-	<bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Title">
-        <property field="pointX" value="10" />
-		<property field="pointY" value="30" />
-    	<property field="lengthX" value="300" />
-		<property field="lengthY" value="160" />
+	<bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Lose">
+        <property field="pointX" value="20" />
+		<property field="pointY" value="100" />
+    	<property field="lengthX" value="280" />
+		<property field="lengthY" value="50" />
     </bean>
         
     

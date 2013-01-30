@@ -35,6 +35,7 @@ public class Invaders extends GameEntity {
 	private int row;
 	private int column;
 	private static int loseLine;
+	private boolean moveDown;
 	
 	public Invaders (){
 		
@@ -50,27 +51,35 @@ public class Invaders extends GameEntity {
 	
 	public void receiveEvent(Event event) {
 		
-		if("MOVEDOWN".equals(event.getMessage().getText())){
-			moveEntity(getPointX(),getPointY()+10);
-		}
 		
 		if("MOVE".equals(event.getMessage().getText())){
 				
 				int px=((Integer) event.getMessageInfo().get("DELTAX"));
 				
-				moveEntity(getPointX()+px,getPointY());
-								
+				if(moveDown){
+					moveEntity(getPointX()+px,getPointY()+10);
+					moveDown=false;
+				}else
+					moveEntity(getPointX()+px,getPointY());
+					
+		}
+
+		if("MOVEDOWN".equals(event.getMessage().getText())){
+			moveDown=true;
 		}
 
 	}
 	
 	public void mind(){
 		
-		if((getPointX())<0)
+		if((getPointX())<0){
 			sendMessage("INVERTRIGHT");
+		}
 			
-		if((getPointX())>getDisplayWidth()-getLengthX())			
+		if((getPointX())>getDisplayWidth()-getLengthX()){
 			sendMessage("INVERTLEFT");
+		}
+		
 		if((getPointY()+getLengthY())>=loseLine){
 			sendMessage("LOSESTAGE");
 		}

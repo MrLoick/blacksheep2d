@@ -2,8 +2,6 @@ package it.uniroma2.blacksheep.spaceinvaders.entity;
 
 import java.util.HashMap;
 
-import android.util.Log;
-
 import it.uniroma2.framework.entity.GameEntity;
 import it.uniroma2.framework.event.Event;
 
@@ -17,6 +15,7 @@ public class Grid extends GameEntity {
 	private static HashMap<String, Object> messageInfoDX = new HashMap<String, Object>();
 	private long moveTime =200;
 	private long timeTiker=0;
+	private boolean moveDown;
 	
 	public Grid(){
 		messageInfoSX.put("DELTAX", -5);
@@ -29,13 +28,19 @@ public class Grid extends GameEntity {
 		long diff = currentTime - timeTiker;
 		if (diff > moveTime) {
 			if (left) {
-				//messageInfo.put("DELTAX", -5);
 				sendMessage("MOVE", messageInfoSX);
-				
+				if(moveDown){
+					sendMessage("MOVEDOWN");
+					moveDown=false;
+				}
 			} else {
-				//messageInfo.put("DELTAX", 5);
 				sendMessage("MOVE", messageInfoDX);
+				if(moveDown){
+					sendMessage("MOVEDOWN");
+					moveDown=false;
+				}
 			}
+			
 			timeTiker=currentTime;
 		}
 	}
@@ -43,13 +48,14 @@ public class Grid extends GameEntity {
 	public void receiveEvent(Event event) {
 
 		if ("INVERTLEFT".equals(event.getMessage().getText())) {
-			sendMessage("MOVEDOWN");
 			left = true;
+			moveDown=true;			
 		}
 		if ("INVERTRIGHT".equals(event.getMessage().getText())) {
-			sendMessage("MOVEDOWN");
 			left = false;
+			moveDown=true;
 		}
+		
 
 	}
 	
