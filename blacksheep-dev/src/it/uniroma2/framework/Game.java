@@ -153,23 +153,23 @@ public class Game extends Activity {
     
     public void onResume(){
     	super.onResume();
-    	Log.i("blacksheep"," onResume");
+    	Log.i("blacksheep","onResume §§§§§§§§§§§§§§§§§§§§§§§§§§");
     }
     
     public void onPause(){
     	super.onPause();
     	//StageManager.getIstance().destroy();
-    	Log.i("blacksheep"," onPause");
+    	Log.i("blacksheep","onPause");
     }
     
     public void onStop(){
     	super.onStop();
-    	Log.i("blacksheep"," onStop");
+    	Log.i("blacksheep","onStop");
     }
     
     public void onDestroy(){
     	super.onDestroy();
-    	Log.i("blacksheep"," onDestroy");
+    	Log.i("blacksheep","onDestroy");
     }
     
     private class ExitStage extends Stage{

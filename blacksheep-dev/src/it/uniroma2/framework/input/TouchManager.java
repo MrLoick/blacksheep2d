@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.MotionEvent;
 
 /*******************************************************************************
@@ -27,15 +28,18 @@ import android.view.MotionEvent;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-@SuppressLint("NewApi")
-public class TouchManager extends AsyncTask<MotionEvent, Void, Void>{
+
+public class TouchManager{
 	
 	private static TouchManager touchManager;
 	
 	private ArrayList<ITouchable> touchableList;
+	private boolean active;
+	
 
 	private TouchManager(){
 		touchableList=new ArrayList<ITouchable>();
+		active=false;
 	}
 	
 	public static TouchManager getIstance(){
@@ -57,6 +61,21 @@ public class TouchManager extends AsyncTask<MotionEvent, Void, Void>{
 		touchableList.clear();
 	}
 	
+	public void onTouchEvent(MotionEvent motionEvent) {
+			for (int i = 0; i < touchableList.size(); i++) {
+				if (motionEvent != null)
+					touchableList.get(i).onTouchEvent(motionEvent);
+			}
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
 	/*public boolean onTouchEvent(MotionEvent motionEvent){
 		  //RTSimulationKernel kernel=RTSimulationKernel.getIstance();
 		  Event event=kernel.requestEventIstance();
@@ -71,14 +90,14 @@ public class TouchManager extends AsyncTask<MotionEvent, Void, Void>{
 		return true;
 	}*/
 
-	@Override
+	/*@Override
 	public Void doInBackground(MotionEvent... params) {
 		for(int i=0;i<touchableList.size();i++){
 			if(params[0]!=null)
 				touchableList.get(i).onTouchEvent(params[0]);
 		}
 		return null;
-	}
+	}*/
 	
 	//multitouch
 	/*public boolean onTouch(View v, MotionEvent event) {

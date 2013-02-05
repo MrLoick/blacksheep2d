@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import it.uniroma2.framework.entity.IDrawable;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.view.SurfaceHolder;
 
 
@@ -32,38 +31,24 @@ import android.view.SurfaceHolder;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-public class Render extends Thread {
+public class Render implements Runnable {
 	
 	private SurfaceHolder surfaceHolder;
 
 	private ArrayList<IDrawable> drawableList;
 	
 	private boolean run=false;
-	
-	private Paint paint;
+		
+	//private Paint paint;
 	
 	private static Render render;
 	
-	public Render(SurfaceHolder surfaceHolder){
-		
-		this.surfaceHolder=surfaceHolder;
-		drawableList=new ArrayList<IDrawable>();
-		paint =new Paint();
-		paint.setColor(Color.WHITE);
-		
-	}
-	
-	/*private Render(){
-		
-	}*/
-	
 	private Render(){
 		
-		//this.surfaceHolder=surfaceHolder;
-		drawableList=new ArrayList<IDrawable>();
-		paint =new Paint();
-		paint.setColor(Color.WHITE);
 		
+		drawableList=new ArrayList<IDrawable>();
+		//paint =new Paint();
+		//paint.setColor(Color.WHITE);
 	}
 	
 	public static Render getIstance(){
@@ -100,7 +85,6 @@ public class Render extends Thread {
 
 				}
 			}
-			//Log.i("blacksheep","render step 2");
 		}
 	}
             
@@ -124,8 +108,7 @@ public class Render extends Thread {
 	
 		
 	public void setSurfaceHolder(SurfaceHolder surfaceHolder) {
-		if(surfaceHolder!=null)
-			this.surfaceHolder = surfaceHolder;
+		this.surfaceHolder = surfaceHolder;
 	}
 
 	
