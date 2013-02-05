@@ -56,8 +56,6 @@ public class StageManager implements IPerceptor {
 		ArrayList<GameEntity> gameEntityList;
 		// verifica se l'evento preve un cambio di livello
 		if ((stageMap.get(event.getMessage())) != null) {
-			//Log.i("blacksheep", "stageManager registrazione componenti "
-			//		+ event.getMessage());
 			// unregister GameEntity from stage for stage change
 			gameEntityList = stage.getGameEntity();
 			for (int i = 0; i < gameEntityList.size(); i++) {
@@ -66,7 +64,6 @@ public class StageManager implements IPerceptor {
 			// set new stage
 			TouchManager.getIstance().clear();
 			MindManager.getIstance().clear();
-			//RenderReference.getIstance().getRender().clearDrawable();
 			Render.getIstance().clearDrawable();
 			stage.clear();
 			stage = stageMap.get(event.getMessage());

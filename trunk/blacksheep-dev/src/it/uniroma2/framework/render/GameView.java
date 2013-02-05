@@ -38,26 +38,18 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 	private Render render;
 	
 	private TouchManager touchManager=TouchManager.getIstance();
+	
+	private Thread renderThread;
 
 	public GameView(Context context) {
 		super(context);
 				
 		getHolder().addCallback(this);
-		//this.render = new Render(getHolder());
-		
 		render=Render.getIstance();
-		render.setSurfaceHolder(getHolder());
-		
 		setFocusable(true);
 		setFocusableInTouchMode(true);
 				
 	}
-	
-	
-	/*public Render getRender(){
-		return render;
-	}*/
-	
 
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
@@ -65,16 +57,19 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 	}
 
 	public void surfaceCreated(SurfaceHolder holder) {
-		
+		renderThread=new Thread(render);
+		render.setSurfaceHolder(holder);
 		render.setRun(true);
-		render.start();
+		renderThread.start();
+		
 		
 	}
 
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		
 		render.setRun(false);
-		render.interrupt();
+		//render.interrupt();
+		render.clearDrawable();
 
 	}
 	
@@ -88,28 +83,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
  
 	
 	 public boolean onTouchEvent(MotionEvent motionEvent){
-		//int pointerCount = motionEvent.getPointerCount();
-		//int id;
-		//MotionEvent event;
-	
-		
-		touchManager.doInBackground(motionEvent);
+
+		touchManager.onTouchEvent(motionEvent);
 		
 		return true;
 		
 	 }
-	 
-
-/*public boolean onTouch(View v, MotionEvent event) {
 	
-	
-	TouchManager touchManager=TouchManager.getIstance();
-	invalidate();
-	return touchManager.onTouchEvent(event);
-}
-	*/
-   /* public void onDraw(Canvas canvas) {
-    	canvas.drawColor(Color.BLACK);
-    }
-*/
 }
