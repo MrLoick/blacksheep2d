@@ -27,9 +27,11 @@ import it.uniroma2.framework.entity.GameEntity;
 public class CreditsButton extends GameEntity {
 	
 	private Bitmap creditButton;
+	private boolean touchFlag;
 	
 	public CreditsButton() {
 		creditButton=getBitmap(R.drawable.creditsbutton);
+		touchFlag=false;
 	}
 	
 	public boolean draw(Canvas canvas) {
@@ -45,11 +47,19 @@ public class CreditsButton extends GameEntity {
 
 			int tx = (int) motionEvent.getX();
 			int ty = (int) motionEvent.getY();
+			
+			if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
+					&& MotionEvent.ACTION_DOWN == motionEvent.getAction()) {
+				touchFlag=true;
+			}
+
+			if (touchFlag){
 
 			if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
 					&& MotionEvent.ACTION_UP == motionEvent.getAction()) {
 				play(R.raw.click);
 				sendMessage("CREDIT");
+			}
 			}
 
 		}
