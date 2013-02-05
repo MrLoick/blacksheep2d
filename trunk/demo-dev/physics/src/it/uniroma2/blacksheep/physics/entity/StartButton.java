@@ -28,9 +28,12 @@ import it.uniroma2.framework.entity.GameEntity;
 public class StartButton extends GameEntity {
 	
 	private Bitmap startButton;
+	
+	private boolean touchFlag;
 
 	public StartButton() {
 		startButton = getBitmap(R.drawable.startbutton);
+		touchFlag=false;
 	}
 
 	public boolean draw(Canvas canvas) {
@@ -45,11 +48,19 @@ public class StartButton extends GameEntity {
 
 			int tx = (int) motionEvent.getX();
 			int ty = (int) motionEvent.getY();
-
+			
 			if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
-					&& MotionEvent.ACTION_UP == motionEvent.getAction()) {
-				play(R.raw.click);
-				sendMessage("STARTGAME");
+					&& MotionEvent.ACTION_DOWN == motionEvent.getAction()) {
+				touchFlag=true;
+			}
+
+			if (touchFlag){
+
+				if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
+						&& MotionEvent.ACTION_UP == motionEvent.getAction()) {
+					play(R.raw.click);
+					sendMessage("STARTGAME");
+				}
 			}
 
 		}

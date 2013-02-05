@@ -28,9 +28,12 @@ public class OkButton extends GameEntity {
 	
 
 	private Bitmap okButton;
+	private boolean touchFlag;
 	
 	public OkButton() {
 		okButton=getBitmap(R.drawable.okbutton);
+		touchFlag=false;
+		
 	}
 	
 	public boolean draw(Canvas canvas) {
@@ -46,11 +49,19 @@ public class OkButton extends GameEntity {
 
 			int tx = (int) motionEvent.getX();
 			int ty = (int) motionEvent.getY();
-
+			
 			if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
-					&& MotionEvent.ACTION_UP == motionEvent.getAction()) {
-				play(R.raw.click);
-				sendMessage("MAINMENU");
+					&& MotionEvent.ACTION_DOWN == motionEvent.getAction()) {
+				touchFlag=true;
+			}
+
+			if (touchFlag){
+
+				if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
+						&& MotionEvent.ACTION_UP == motionEvent.getAction()) {
+					play(R.raw.click);
+					sendMessage("MAINMENU");
+				}
 			}
 
 		}
