@@ -29,8 +29,11 @@ public class ExitButton extends GameEntity {
 	
 	private Bitmap exitButton;
 	
+	private boolean touchFlag;
+	
 	public ExitButton() {
 		exitButton=getBitmap(R.drawable.exitbutton);
+		touchFlag=false;
 	}
 	
 	public boolean draw(Canvas canvas) {
@@ -46,12 +49,20 @@ public class ExitButton extends GameEntity {
 
 			int tx = (int) motionEvent.getX();
 			int ty = (int) motionEvent.getY();
-
+			
 			if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
-					&& MotionEvent.ACTION_UP == motionEvent.getAction()) {
-				play(R.raw.click);
-				sendMessage("EXIT");
+					&& MotionEvent.ACTION_DOWN == motionEvent.getAction()) {
+				touchFlag=true;
 			}
+
+			if (touchFlag)
+				if (tx >= getPointX() && tx <= getPointX() + getLengthX()
+						&& ty >= getPointY()
+						&& ty <= getPointY() + getLengthY()
+						&& MotionEvent.ACTION_UP == motionEvent.getAction()) {
+					play(R.raw.click);
+					sendMessage("EXIT");
+				}
 
 		}
 		return true;
