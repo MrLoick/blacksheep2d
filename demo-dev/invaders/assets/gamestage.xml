@@ -104,15 +104,146 @@
 		<property field="dynamic" value="true" />
     </bean>
     
+    <!--line 2 -->
+     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="2" />
+        <property field="pointX" value="1" />
+		<property field="pointY" value="60" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="2" />
+        <property field="pointX" value="31" />
+		<property field="pointY" value="60" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean> 
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="2" />
+        <property field="pointX" value="61" />
+		<property field="pointY" value="60" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="2" />
+        <property field="pointX" value="91" />
+		<property field="pointY" value="60" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="2" />
+        <property field="pointX" value="121" />
+		<property field="pointY" value="60" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="2" />
+        <property field="pointX" value="151" />
+		<property field="pointY" value="60" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="2" />
+        <property field="pointX" value="181" />
+		<property field="pointY" value="60" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
    
     
-    <!-- line 2 -->
-     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+    
+    <!-- line 3 -->
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="3" />
+        <property field="pointX" value="1" />
+		<property field="pointY" value="80" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="3" />
+        <property field="pointX" value="31" />
+		<property field="pointY" value="80" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean> 
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="3" />
+        <property field="pointX" value="61" />
+		<property field="pointY" value="80" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="3" />
+        <property field="pointX" value="91" />
+		<property field="pointY" value="80" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="3" />
+        <property field="pointX" value="121" />
+		<property field="pointY" value="80" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="3" />
+        <property field="pointX" value="151" />
+		<property field="pointY" value="80" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+    
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
+        <property field="invaderType" value="3" />
+        <property field="pointX" value="181" />
+		<property field="pointY" value="80" />
+    	<property field="lengthX" value="20" />
+		<property field="lengthY" value="10" />
+		<property field="dynamic" value="true" />
+    </bean>
+   
+    
+    
+    <!--  <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.Invaders">
         <property field="pointX" value="60" />
 		<property field="pointY" value="70" />
     	<property field="lengthX" value="20" />
 		<property field="lengthY" value="10" />
 		<property field="dynamic" value="true" />
-    </bean>
+    </bean> -->
        
 </begin>

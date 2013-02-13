@@ -37,6 +37,8 @@ public class SpaceInvadersActivity extends Game {
 		loadImage(R.drawable.cannon);
 		loadImage(R.drawable.rightbutton);
 		loadImage(R.drawable.invaders1);
+		loadImage(R.drawable.invaders2);
+		loadImage(R.drawable.invaders3);
 		loadImage(R.drawable.credits);
 		loadImage(R.drawable.okbutton);
 		loadImage(R.drawable.fire);
@@ -45,6 +47,8 @@ public class SpaceInvadersActivity extends Game {
 		
 		loadAudio(R.raw.click);
 		loadAudio(R.raw.fire);
+		loadAudio(R.raw.base);
+		loadAudio(R.raw.inv_death);
 	}
 
 }

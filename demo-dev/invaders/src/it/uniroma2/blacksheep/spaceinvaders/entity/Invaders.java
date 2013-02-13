@@ -36,9 +36,10 @@ public class Invaders extends GameEntity {
 	private int column;
 	private static int loseLine;
 	private boolean moveDown;
+	private int invaderType;
 	
 	public Invaders (){
-		
+		invaderType=0;
 		invaders=getBitmap(R.drawable.invaders1);
 		loseLine=getDisplayHeight()-(getDisplayHeight()/5);
 	}
@@ -50,8 +51,7 @@ public class Invaders extends GameEntity {
 	}
 	
 	public void receiveEvent(Event event) {
-		
-		
+				
 		if("MOVE".equals(event.getMessage().getText())){
 				
 				int px=((Integer) event.getMessageInfo().get("DELTAX"));
@@ -90,17 +90,32 @@ public class Invaders extends GameEntity {
 		Log.i("blacksheep","# invader receive collision event");
 		if(contact.m_fixtureA.getUserData() instanceof Fire){
 			Log.i("blacksheep","#fire è a");
+			play(R.raw.inv_death);
 			sendMessage("DEATH");
 			unregister();
 		}
 		if(contact.m_fixtureB.getUserData() instanceof Fire){	
 			Log.i("blacksheep","# fire è b");
+			play(R.raw.inv_death);
 			sendMessage("DEATH");
 			unregister();
 		}
 		return true;	
 	}
 
+	
+	
+	public void invaderType(int type){
+		Log.i("blacksheep","select type to draw");
+		if(type==3){
+			invaders=getBitmap(R.drawable.invaders2);
+		}
+			
+		if(type==3){
+			invaders=getBitmap(R.drawable.invaders3);
+		}
+	}
+	
 	public int getRow() {
 		return row;
 	}
