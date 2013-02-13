@@ -8,7 +8,7 @@
     </bean>
         
     
-    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.ExitButton">
+    <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.OkButton">
 		<property field="pointX" value="60" />
 		<property field="pointY" value="360" />
 		<property field="lengthX" value="200" />
