@@ -4,7 +4,6 @@ import org.jbox2d.dynamics.contacts.Contact;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.util.Log;
 import it.uniroma2.blacksheep.spaceinvaders.R;
 import it.uniroma2.framework.entity.GameEntity;
 import it.uniroma2.framework.event.Event;
@@ -31,8 +30,6 @@ import it.uniroma2.framework.event.Event;
 public class Fire extends GameEntity {
 	
 	private Bitmap fire;
-	//private boolean flag=false;
-	
 	private boolean active;
 	
 	public Fire(){
@@ -52,18 +49,12 @@ public class Fire extends GameEntity {
 	
 	public void receiveEvent(Event event) {
 		if("FIRE".equals(event.getMessage().getText()) && active==false){
-			//Log.i("blacksheep", "FIRE event ok");	
 			int px=((Integer) event.getMessageInfo().get("POINTX"));
 			int py=((Integer) event.getMessageInfo().get("POINTY"));
-			//Log.i("blacksheep", "value in message pointX "+px+" pointY "+py);
 			play(R.raw.fire);
-			moveEntity(px, py);
-			//Log.i("blacksheep", "fire start in pointX "+getPointX()+" pointY "+getPointY());				
+			moveEntity(px, py);				
 			active=true;
 		}
-		
-		//active=true;
-				
 	}
 	
 
@@ -71,16 +62,11 @@ public class Fire extends GameEntity {
 		
 		if(active){
 			if(getPointY()>=0){
-				//Log.i("blacksheep", "mind in run shoot "+getPointY());
-				//setPointY(getPointY()-4);
 				moveEntity(getPointX(),getPointY()-10);
 			}
 			if(getPointY()<0){
-				Log.i("blacksheep", "mind sparizione");
 				active=false;
 				moveEntity(-10,-10);
-				//setPointX(-10);
-				//setPointY(-10);
 			}	
 		}
 	}
@@ -90,12 +76,12 @@ public class Fire extends GameEntity {
 		
 		if(contact.m_fixtureA.getUserData() instanceof Invaders){
 			moveEntity(-10,-10);
-			Log.i("blacksheep","invaders è a collision");
+			//Log.i("blacksheep","invaders è a collision");
 		}
 		
 		if(contact.m_fixtureB.getUserData() instanceof Invaders){
 			moveEntity(-10,-10);
-			Log.i("blacksheep","invaders è b collision");
+			//Log.i("blacksheep","invaders è b collision");
 		}
 				
 		return true;	

@@ -43,7 +43,7 @@
     </bean>
     
     <bean id="test" class="it.uniroma2.blacksheep.spaceinvaders.entity.EndGame">
-        <property field="deathCount" value="8" />
+        <property field="deathCount" value="21" />
     </bean>
     
     <!-- line 1 -->

@@ -1,6 +1,5 @@
 package it.uniroma2.blacksheep.spaceinvaders.entity;
 
-import android.util.Log;
 import it.uniroma2.framework.entity.GameEntity;
 import it.uniroma2.framework.event.Event;
 
