@@ -36,10 +36,10 @@ public class Invaders extends GameEntity {
 	private int column;
 	private static int loseLine;
 	private boolean moveDown;
-	private int invaderType;
+	//private int invaderType;
 	
 	public Invaders (){
-		invaderType=0;
+		//invaderType=0;
 		invaders=getBitmap(R.drawable.invaders1);
 		loseLine=getDisplayHeight()-(getDisplayHeight()/5);
 	}

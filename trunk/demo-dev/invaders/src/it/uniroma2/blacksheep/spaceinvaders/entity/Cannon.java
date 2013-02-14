@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.util.Log;
 import it.uniroma2.blacksheep.spaceinvaders.R;
 import it.uniroma2.framework.entity.GameEntity;
 import it.uniroma2.framework.event.Event;
@@ -47,26 +46,17 @@ public class Cannon extends GameEntity {
 	}
 	
 	public void receiveEvent(Event event){
-		//Log.i("blacksheep", "evento ricevuto §§§§§§§§§§§§§§§§§§§§§§§§ "+event.getMessage().getText());
 		if("MOVELEFT".equals(event.getMessage().getText())){
-			//Log.i("blacksheep", "leftmove §§§§§§§§§§§§§§§§§§§§§§§§");
 			moveEntity(getPointX()-3,getPointY());
 		}
 			
 		if("MOVERIGHT".equals(event.getMessage().getText())){
-			//Log.i("blacksheep", "MOVERIGHT §§§§§§§§§§§§§§§§§§§§§§§§");
 			moveEntity(getPointX()+3,getPointY());
 		}
 		
 		if("CANNONFIRE".equals(event.getMessage().getText())){
-			
-			//event.setMessageInfo("POINTX",);
-			
 			messageInfo.put("POINTX", getPointX()+(getLengthX()/2));
 			messageInfo.put("POINTY", getPointY());
-			
-			//Log.i("blacksheep", "fire pointX "+getPointX()+" pointY "+getPointY());
-			
 			sendMessage("FIRE",messageInfo);
 		}
 		

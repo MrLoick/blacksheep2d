@@ -19,6 +19,7 @@ public class Grid extends GameEntity {
 	private long timeTikerSpeed=0;
 	private long speedTime=20000;
 	private boolean moveDown;
+	//audio base 
 	private int baseAcc;
 	private int baseAcc2;
 	
