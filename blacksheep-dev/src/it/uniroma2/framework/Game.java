@@ -7,6 +7,8 @@ import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.event.RTSimulationKernel;
 import it.uniroma2.framework.mind.MindAsyncTask;
+import it.uniroma2.framework.mind.MindManager;
+import it.uniroma2.framework.physic.AdaptJBox2D;
 import it.uniroma2.framework.physic.PhysicAsyncTask;
 import it.uniroma2.framework.render.GameView;
 import it.uniroma2.framework.render.ImageMap;
@@ -123,10 +125,10 @@ public class Game extends Activity {
         soundClip=Audio.getIstance();
         resources();       
         
-        //new Thread(MindManager.getIstance()).start();
-        (new MindAsyncTask()).doInBackground();
-        //new Thread(AdaptJBox2D.getIstance()).start();
-        (new PhysicAsyncTask()).doInBackground();
+        new Thread(MindManager.getIstance()).start();
+        //(new MindAsyncTask()).doInBackground();
+        new Thread(AdaptJBox2D.getIstance()).start();
+        //(new PhysicAsyncTask()).doInBackground();
         
         new SaxXmlParserMessage().parse();
         new SaxXmlParser().parse();
