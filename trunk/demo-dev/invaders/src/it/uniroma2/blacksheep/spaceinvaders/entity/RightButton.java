@@ -28,6 +28,7 @@ import it.uniroma2.framework.entity.GameEntity;
 public class RightButton extends GameEntity {
 	
 	private Bitmap rightButton;
+	private boolean moveFlag=false;
 
 	public RightButton() {
 		rightButton = getBitmap(R.drawable.rightbutton);
@@ -47,12 +48,22 @@ public class RightButton extends GameEntity {
 			int ty = (int) motionEvent.getY();
 
 			if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
-					/*&& MotionEvent.ACTION_UP == motionEvent.getAction()*/) {
-				sendMessage("MOVERIGHT");
+					&& MotionEvent.ACTION_DOWN  == motionEvent.getAction()) {
+				moveFlag=true;
+			}
+			
+			if(MotionEvent.ACTION_UP  == motionEvent.getAction()){
+				moveFlag=false;
 			}
 
 		}
 		return true;
 	}
+	
+	public void mind() {
+		if(moveFlag)
+			sendMessage("MOVERIGHT");
+	}
+	
 
 }

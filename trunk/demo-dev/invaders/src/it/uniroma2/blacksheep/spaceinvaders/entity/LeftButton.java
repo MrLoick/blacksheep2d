@@ -29,6 +29,7 @@ import it.uniroma2.framework.entity.GameEntity;
 public class LeftButton extends GameEntity {
 	
 	private Bitmap leftButton;
+	private boolean moveFlag;
 
 	public LeftButton() {
 		leftButton = getBitmap(R.drawable.leftbutton);
@@ -42,19 +43,26 @@ public class LeftButton extends GameEntity {
 	}
 
 	public boolean onTouchEvent(MotionEvent motionEvent) {
-		Log.i("blacksheep", "touch screen §§§§§§§§§§§§§§§§§§§§§§§§");
 		if (motionEvent != null) {
 
 			int tx = (int) motionEvent.getX();
 			int ty = (int) motionEvent.getY();
 
 			if (tx >= getPointX() && tx <= getPointX() + getLengthX() && ty >= getPointY() && ty <= getPointY() + getLengthY()
-					/*&& MotionEvent.ACTION_DOWN == motionEvent.getAction()*/) {
-				Log.i("blacksheep", "invia ora §§§§§§§§§§§§§§§§§§§§§§§§");
-				sendMessage("MOVELEFT");
+					&& MotionEvent.ACTION_DOWN == motionEvent.getAction()) {
+				moveFlag=true;
+				
+			}
+			if(MotionEvent.ACTION_UP  == motionEvent.getAction()){
+				moveFlag=false;
 			}
 		}
 		return true;
 	}	
+	
+	public void mind() {
+		if(moveFlag)
+			sendMessage("MOVELEFT");
+	}
 	
 }
