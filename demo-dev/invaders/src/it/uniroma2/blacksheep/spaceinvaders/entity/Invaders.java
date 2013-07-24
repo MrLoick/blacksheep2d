@@ -92,13 +92,17 @@ public class Invaders extends GameEntity {
 			Log.i("blacksheep","#fire è a");
 			play(R.raw.inv_death);
 			sendMessage("DEATH");
+			((Fire)contact.m_fixtureA.getUserData()).reset();
 			unregister();
+			
 		}
 		if(contact.m_fixtureB.getUserData() instanceof Fire){	
 			Log.i("blacksheep","# fire è b");
 			play(R.raw.inv_death);
 			sendMessage("DEATH");
+			((Fire)contact.m_fixtureB.getUserData()).reset();
 			unregister();
+			
 		}
 		return true;	
 	}
