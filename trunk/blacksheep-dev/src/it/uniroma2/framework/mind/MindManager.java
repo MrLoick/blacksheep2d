@@ -34,7 +34,7 @@ public class MindManager implements Runnable{//Thread {
 	
 	private ArrayList<IMind> mindList;
 	
-	private boolean run;
+	private boolean run=true;
 	private Handler handler;
 
 	private MindManager(){
@@ -73,12 +73,12 @@ public class MindManager implements Runnable{//Thread {
 		
 	
 	public void run() {
-
-		for (int index = 0; index < mindList.size(); index++)
-			mindList.get(index).mind();
+		if(run){
+			for (int index = 0; index < mindList.size(); index++)
+				mindList.get(index).mind();
 				
-
-		handler.postDelayed(this, 30);
+			handler.postDelayed(this, 30);
+		}		
 	}
 
 	public boolean isRun() {
