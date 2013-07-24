@@ -6,10 +6,8 @@ import it.uniroma2.framework.audio.Audio;
 import it.uniroma2.framework.event.Event;
 import it.uniroma2.framework.event.Message;
 import it.uniroma2.framework.event.RTSimulationKernel;
-import it.uniroma2.framework.mind.MindAsyncTask;
 import it.uniroma2.framework.mind.MindManager;
 import it.uniroma2.framework.physic.AdaptJBox2D;
-import it.uniroma2.framework.physic.PhysicAsyncTask;
 import it.uniroma2.framework.render.GameView;
 import it.uniroma2.framework.render.ImageMap;
 import it.uniroma2.framework.stage.Stage;
@@ -55,6 +53,9 @@ public class Game extends Activity {
 	private static float scaleWidth;
 	
 	private GameView gameView;
+	
+	private Thread mindThread;
+	private Thread physicThread;
 	
 	private ImageMap imageMap;
 	private Audio soundClip;
@@ -125,9 +126,11 @@ public class Game extends Activity {
         soundClip=Audio.getIstance();
         resources();       
         
-        new Thread(MindManager.getIstance()).start();
-        //(new MindAsyncTask()).doInBackground();
-        new Thread(AdaptJBox2D.getIstance()).start();
+        mindThread=new Thread(MindManager.getIstance());
+        mindThread.start();
+        
+        physicThread = new Thread(AdaptJBox2D.getIstance());
+        physicThread.start();
         //(new PhysicAsyncTask()).doInBackground();
         
         new SaxXmlParserMessage().parse();
@@ -155,7 +158,7 @@ public class Game extends Activity {
     
     public void onResume(){
     	super.onResume();
-    	Log.i("blacksheep","onResume §§§§§§§§§§§§§§§§§§§§§§§§§§");
+    	Log.i("blacksheep","onResume");
     }
     
     public void onPause(){
@@ -166,6 +169,7 @@ public class Game extends Activity {
     
     public void onStop(){
     	super.onStop();
+    	MindManager.getIstance().setRun(false);
     	Log.i("blacksheep","onStop");
     }
     
