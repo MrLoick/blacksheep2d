@@ -2,7 +2,6 @@ package it.uniroma2.blacksheep.spaceinvaders.entity;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.MotionEvent;
 import it.uniroma2.blacksheep.spaceinvaders.R;
 import it.uniroma2.framework.entity.GameEntity;
